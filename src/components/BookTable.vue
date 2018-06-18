@@ -14,6 +14,8 @@
         <div class="container">
           <h1 class="title">
             View Your Books
+          </h1>
+          <h1 class="title is-2">
             <span class="icon has-text-dark">
               <i class="fa fa-eye"></i>
             </span>
@@ -36,6 +38,9 @@
             </tr>
           </thead>
 
+          <!-- Modal Note-Editor Dialog -->
+          <Modal :bookKey="this.key" :bookNote="this.note" v-if="modalIsActive" v-on:save="saveNote" @close="modalIsActive=false">{{this.title}} by {{this.author}} - Notes</Modal>
+
           <!-- Table Body -->
           <tbody>
             <tr v-for="book in books" :key="book['.key']">
@@ -43,18 +48,18 @@
 
                 <!-- Book Title Entry -->
                 <!-- <a v-on:click="toggleModal">{{ book.title }}</a> -->
-                <a v-on:click="modalIsActive=true">{{ book.title }}</a>
+                <a v-on:click="showModal(book)">{{ book.title }}</a>
 
                 <!-- Modal Note Dialog -->
-                <Modal v-if="modalIsActive" v-on:save="saveTest" noteProp="this.note" @close="modalIsActive=false"></Modal>
+                <!-- TODO: Data passing is working, but only on the last item of the list; not sure why -->
               </td>
 
               <!-- Author Entry -->
-              <td>{{ book.author }}</td>
+              <td @click="logBook(book)">{{ book.author }}</td>
 
               <!-- Remove Entry Button -->
               <td>
-                <i class=" fa fa-trash " aria-hidden="true " v-on:click="removeBook(book) "></i>
+                <i class="fa fa-trash" aria-hidden="true " v-on:click="removeBook(book) "></i>
               </td>
             </tr>
           </tbody>
@@ -81,26 +86,36 @@ export default {
   data () {
     return {
       modalIsActive: false,
-      note: "prop note test"
+      key: "",
+      title: "",
+      author: "",
+      note: ""
     }
   },
   methods: {
+    // Remove the book from the database
     removeBook: function (book) {
       this.$firebaseRefs.books.child(book['.key']).remove()
     },
-    saveNote: function (book) {
-      // update the firebase note value to the local note
-      // this.$firebaseRefs.books.child(book['.key']).child('note').set(this.note);
-      // this.toggleModal(book);
-      console.log("save button pressed");
+    // Show the modal and view / edit the note
+    showModal: function (book) {
+      this.modalIsActive = true;
+      this.key = book['.key'];
+      this.title = book.title;
+      this.author = book.author;
+      this.note = book.note;
     },
-    saveTest: function () {
-      console.log("saveTest")
-    }
+    // Save the note to database and close the modal
+    saveNote: function (data) {
+      // update the firebase note value to the local note
+      this.$firebaseRefs.books.child(data[0]).child('note').set(data[1]);
+      console.log("Should be saved to firebase...");
+      this.modalIsActive = false;
+      data[1] = "";
+    },
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>

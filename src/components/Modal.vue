@@ -9,18 +9,22 @@
 
       <!-- Card Header -->
       <header class="modal-card-head">
-        <p class="modal-card-title">Book Notes</p>
+        <p class="modal-card-title">
+          <slot></slot>
+        </p>
         <button @click="$emit('close')" class="delete" aria-label="close"></button>
       </header>
 
       <!-- Card Body -->
       <section class="modal-card-body">
-        <textarea class="textarea is-focused" v-model="this.note" placeholder="This was a great book!"></textarea>
+        <!-- <textarea class="textarea is-focused" v-model="note" placeholder="This was a great book!"></textarea> -->
+        <textarea class="textarea is-focused" v-model="note" placeholder="This was a great book!"></textarea>
+        <button class="button" @click="logBook">Log to Console</button>
       </section>
 
       <!-- Card Footer -->
       <footer class="modal-card-foot">
-        <button @click="$emit('save', this.note) " class=" button is-success ">Save changes</button>
+        <button @click="$emit('save', [key, note] )" class=" button is-success ">Save changes</button>
         <button @click="$emit('close')" class="button ">Cancel</button>
       </footer>
     </div>
@@ -30,18 +34,22 @@
 <script>
 export default {
   name: "Modal",
-  props: [
-    'bookData',
-    'noteProp'
-  ],
+  props: {
+    bookKey: String,
+    bookNote: String
+  },
   data: function () {
     return {
-      note: ""
+      // key: this.bookData[".key"],
+      // note: this.bookData.note
+      key: this.bookKey,
+      note: this.bookNote
     }
   },
   methods: {
-    mounted: function () {
-      this.note = this.noteProp
+    logBook: function () {
+      console.log(this.key);
+      console.log(this.note);
     }
   }
 }
