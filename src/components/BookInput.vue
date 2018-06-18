@@ -2,7 +2,7 @@
   <div>
 
     <!-- Hero Section -->
-    <section class="hero is-medium is-primary is-bold">
+    <section class="hero is-small is-primary is-bold">
 
       <!-- Hero-Head -->
       <div class="hero-head">
@@ -14,6 +14,11 @@
         <div class="container">
           <h1 class="title">
             Add New Books
+          </h1>
+          <h1 class="title is-2">
+            <span class="icon has-text-dark">
+              <i class="fa fa-plus"></i>
+            </span>
           </h1>
         </div>
       </div>
@@ -38,14 +43,6 @@
               <input class="input" type="text" id="bookAuthor" placeholder="Book Author" v-model="newBook.author">
             </div>
           </div>
-
-          <!-- Book Url Field -->
-          <!-- <div class="field">
-            <label class="label" for="bookUrl">Url:</label>
-            <div class="control">
-              <input class="input" type="text" id="bookUrl" placeholder="Book Url" v-model="newBook.url">
-            </div>
-          </div> -->
 
           <input type="submit" class="button is-primary" value="Add Book">
         </form>

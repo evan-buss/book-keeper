@@ -11,6 +11,8 @@
       <div class="container">
         <h1 class="title">
           Welcome to the Book Keeper
+        </h1>
+        <h1 class="title is-2">
           <span class="icon has-text-dark">
             <i class="fa fa-book"></i>
           </span>
