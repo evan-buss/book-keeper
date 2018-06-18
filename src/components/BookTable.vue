@@ -42,25 +42,11 @@
               <td>
 
                 <!-- Book Title Entry -->
-                <a v-on:click="toggleModal">{{ book.title }}</a>
+                <!-- <a v-on:click="toggleModal">{{ book.title }}</a> -->
+                <a v-on:click="modalIsActive=true">{{ book.title }}</a>
 
                 <!-- Modal Note Dialog -->
-                <div v-if="showModal" class="modal is-active">
-                  <div class="modal-background"></div>
-                  <div class="modal-card">
-                    <header class="modal-card-head">
-                      <p class="modal-card-title">{{ book.title }} - Notes</p>
-                      <button @click="toggleModal" class="delete" aria-label="close"></button>
-                    </header>
-                    <section class="modal-card-body">
-                      <textarea class="textarea is-focused" v-model="note" placeholder="This was a great book!"></textarea>
-                    </section>
-                    <footer class="modal-card-foot">
-                      <button @click="saveNote(book)" class="button is-success">Save changes</button>
-                      <button @click="toggleModal" class="button">Cancel</button>
-                    </footer>
-                  </div>
-                </div>
+                <Modal v-if="modalIsActive" v-on:save="saveTest" noteProp="this.note" @close="modalIsActive=false"></Modal>
               </td>
 
               <!-- Author Entry -->
@@ -68,7 +54,7 @@
 
               <!-- Remove Entry Button -->
               <td>
-                <i class="fa fa-trash" aria-hidden="true" v-on:click="removeBook(book)"></i>
+                <i class=" fa fa-trash " aria-hidden="true " v-on:click="removeBook(book) "></i>
               </td>
             </tr>
           </tbody>
@@ -81,6 +67,7 @@
 <script>
 import { db } from '../config/db.js';
 import NavBar from './NavBar';
+import Modal from './Modal';
 
 export default {
   name: 'BookTable',
@@ -88,12 +75,13 @@ export default {
     books: db.ref("books"),
   },
   components: {
-    NavBar
+    NavBar,
+    Modal
   },
   data () {
     return {
-      showModal: false,
-      note: ""
+      modalIsActive: false,
+      note: "prop note test"
     }
   },
   methods: {
@@ -102,12 +90,12 @@ export default {
     },
     saveNote: function (book) {
       // update the firebase note value to the local note
-      this.$firebaseRefs.books.child(book['.key']).child('note').set(this.note);
-      this.toggleModal(book);
+      // this.$firebaseRefs.books.child(book['.key']).child('note').set(this.note);
+      // this.toggleModal(book);
+      console.log("save button pressed");
     },
-    toggleModal: function (book) {
-      // might clear note / display note when loaded / closed
-      this.showModal = !this.showModal;
+    saveTest: function () {
+      console.log("saveTest")
     }
   }
 }

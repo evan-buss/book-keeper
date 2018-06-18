@@ -5,7 +5,7 @@ import BookInput from "../components/BookInput";
 import BookTable from "../components/BookTable";
 
 Vue.use(Router);
-
+// TODO: Learn how to pass router parameters
 export default new Router({
   routes: [
     {
