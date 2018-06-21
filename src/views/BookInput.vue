@@ -27,20 +27,38 @@
     <section class="section">
       <div class="container is-fluid">
         <form id="form" v-on:submit.prevent="addBook">
+          <!-- <form id="form" v-on:submit.prevent="debug"> -->
 
           <!-- Book Title Field -->
           <div class="field">
             <label class="label" for="bookTitle">Title:</label>
             <div class="control">
-              <input class="input" type="text" id="bookTitle" placeholder="Book Title" v-model="newBook.title">
+              <input v-validate="'required'" name="title" class="input" type="text" id="bookTitle" placeholder="Book Title" v-model="newBook.title" autocomplete="off">
+
+              <transition v-if="errors.has('title')" name="fade" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+                <article class="alert message is-danger is-small">
+                  <div class="message-body">
+                    {{ errors.first('title') }}
+                  </div>
+                </article>
+              </transition>
+
             </div>
-          </div>
+            </div>
 
           <!-- Book Author Field -->
           <div class="field">
             <label class="label" for="bookAuthor">Author:</label>
             <div class="control">
-              <input class="input" type="text" id="bookAuthor" placeholder="Book Author" v-model="newBook.author">
+              <input v-validate="'required'" name="author" class="input" type="text" id="bookAuthor" placeholder="Book Author" v-model="newBook.author" autocomplete="off">
+
+              <transition v-if="errors.has('author')" name="fade" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+                <article class="alert message is-danger is-small">
+                  <div class="message-body">
+                    {{ errors.first('author') }}
+                  </div>
+                </article>
+              </transition>
             </div>
           </div>
 
@@ -52,35 +70,36 @@
 </template>
 
 <script>
-import { db } from '../config/db.js';
-import NavBar from '../components/NavBar';
+import { db } from "../config/db.js";
+import NavBar from "../components/NavBar";
 
 export default {
-  name: 'BookInput',
+  name: "BookInput",
   components: {
     NavBar
   },
   firebase: {
     books: db.ref("books")
   },
-  data () {
+  data() {
     return {
       newBook: {
-        title: '',
-        author: '',
-        note: 'Empty Note'
+        title: "",
+        author: "",
+        note: "Empty Note"
       }
-    }
+    };
   },
-  // TODO: only allow them to submit if the fields aren't blank
   methods: {
-    addBook: function () {
-      this.$firebaseRefs.books.push(this.newBook);
-      this.newBook.title = '';
-      this.newBook.author = '';
+    addBook: function() {
+      this.$validator.validateAll().then(result => {
+        this.$firebaseRefs.books.push(this.newBook);
+        this.newBook.title = "";
+        this.newBook.author = "";
+      });
     }
   }
-}
+};
 </script>
 
 <style scoped>
