@@ -53,13 +53,11 @@
 
 <script>
 import { db } from '../config/db.js';
-import BookTable from './BookTable';
-import NavBar from './NavBar';
+import NavBar from '../components/NavBar';
 
 export default {
   name: 'BookInput',
   components: {
-    BookTable,
     NavBar
   },
   firebase: {

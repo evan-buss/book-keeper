@@ -71,8 +71,8 @@
 
 <script>
 import { db } from '../config/db.js';
-import NavBar from './NavBar';
-import Modal from './Modal';
+import NavBar from '../components/NavBar';
+import Modal from '../components/Modal';
 
 export default {
   name: 'BookTable',

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import NavBar from './NavBar';
+import NavBar from '../components/NavBar';
 
 export default {
   name: 'Home',
