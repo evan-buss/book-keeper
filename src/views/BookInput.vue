@@ -27,14 +27,14 @@
     <section class="section">
       <div class="container is-fluid">
         <form id="form" v-on:submit.prevent="addBook">
-          <!-- <form id="form" v-on:submit.prevent="debug"> -->
 
           <!-- Book Title Field -->
           <div class="field">
             <label class="label" for="bookTitle">Title:</label>
             <div class="control">
-              <input v-validate="'required'" name="title" class="input" type="text" id="bookTitle" placeholder="Book Title" v-model="newBook.title" autocomplete="off">
+              <input v-validate.disable="'required|min:2'" name="title" class="input" type="text" id="bookTitle" placeholder="Book Title" v-model="newBook.title" autocomplete="off">
 
+              <!-- Validation Error Popup-->
               <transition v-if="errors.has('title')" name="fade" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
                 <article class="alert message is-danger is-small">
                   <div class="message-body">
@@ -44,14 +44,15 @@
               </transition>
 
             </div>
-            </div>
+          </div>
 
           <!-- Book Author Field -->
           <div class="field">
             <label class="label" for="bookAuthor">Author:</label>
             <div class="control">
-              <input v-validate="'required'" name="author" class="input" type="text" id="bookAuthor" placeholder="Book Author" v-model="newBook.author" autocomplete="off">
+              <input v-validate.disable="'required|min:2'" name="author" class="input" type="text" id="bookAuthor" placeholder="Book Author" v-model="newBook.author" autocomplete="off">
 
+              <!-- Validation Error Popup-->
               <transition v-if="errors.has('author')" name="fade" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
                 <article class="alert message is-danger is-small">
                   <div class="message-body">
@@ -59,10 +60,12 @@
                   </div>
                 </article>
               </transition>
+
             </div>
           </div>
-
+          <!-- <input type="submit" class="button is-primary" :title="{ Disabled: true, button }" value="Add Book"> -->
           <input type="submit" class="button is-primary" value="Add Book">
+
         </form>
       </div>
     </section>
@@ -93,9 +96,11 @@ export default {
   methods: {
     addBook: function() {
       this.$validator.validateAll().then(result => {
-        this.$firebaseRefs.books.push(this.newBook);
-        this.newBook.title = "";
-        this.newBook.author = "";
+        if (result) {
+          this.$firebaseRefs.books.push(this.newBook);
+          this.newBook.title = "";
+          this.newBook.author = "";
+        }
       });
     }
   }

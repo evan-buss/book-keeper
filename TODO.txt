@@ -1,18 +1,19 @@
+
+
 User Validation
+  sign in and have your own database of books
 
 Transitions
 
-Mobile Friendly
-
-Styling
+CSS
+  Mobile Friendly
+  Better book table / list appearance
+    turn it into cards / sections with shadows
+    Let user view their notes without opening the edit modal
+  Sidebar for mobile
+    Account Info
+    Nav links
+    about page
 
 Rating system
   Stars that you click on
-
-Better looking table format
-  Let user view their notes without opening the edit modal
-
-Try to make a sidebar that pops out
-  Account Info
-  Nav links
-  about page
