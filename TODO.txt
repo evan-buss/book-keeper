@@ -1,9 +1,8 @@
-
-
 User Validation
   sign in and have your own database of books
 
 Transitions
+  between pages, etc.
 
 CSS
   Mobile Friendly
@@ -16,4 +15,7 @@ CSS
     about page
 
 Rating system
-  Stars that you click on
+  Need to save the ratings to firebase
+    Can I set firebase to only accept certain value types?
+
+Test implementing a progress bar

@@ -38,20 +38,17 @@ export default {
     bookKey: String,
     bookNote: String
   },
-  data: function () {
+  data: function() {
     return {
-      // key: this.bookData[".key"],
-      // note: this.bookData.note
       key: this.bookKey,
       note: this.bookNote
-    }
+    };
   },
   methods: {
-    logBook: function () {
+    logBook: function() {
       console.log(this.key);
       console.log(this.note);
     }
   }
-}
+};
 </script>
-
