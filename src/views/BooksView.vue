@@ -3,12 +3,10 @@
 
     <!-- Hero Section -->
     <section class="hero is-small is-primary is-bold">
-
       <!-- Hero-Head -->
       <div class="hero-head">
         <NavBar></NavBar>
       </div>
-
       <!-- Hero-Body -->
       <div class="hero-body">
         <div class="container">
@@ -24,46 +22,67 @@
       </div>
     </section>
 
-    <!-- Table -->
+    <!-- Content Section -->
     <section class="section">
       <div class="container is-fluid">
-        <table class="table is-hoverable is-narrow is-striped is-fullwidth">
 
-          <!-- Table Head -->
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
+        <!-- Columns -->
+        <div class="columns">
+          <div class="column">
+            <BookCard :rating="4">
+              <template slot="header">
+                Title - Author
+              </template>
+              <template slot="content">
+                This is the note for Title - Author
+              </template>
+            </BookCard>
+          </div>
+          <div class="column">
+            <BookCard :rating="0">
+              <template slot="header">
+                Title - Author
+              </template>
+              <template slot="content">
+                This is the note for Title - Author
+              </template>
+            </BookCard>
+          </div>
+        </div>
 
-          <!-- Modal Note-Editor Dialog -->
-          <Modal :bookKey="this.key" :bookNote="this.note" v-if="modalIsActive" v-on:save="saveNote" @close="modalIsActive=false">{{this.title}} by {{this.author}} - Notes</Modal>
+        <div class="columns">
+          <div class="column">
+            <BookCard :rating="1">
+              <template slot="header">
+                Title - Author
+              </template>
+              <template slot="content">
+                This is the note for Title - Author
+              </template>
+            </BookCard>
+          </div>
+          <div class="column">
+            <BookCard :rating="2">
+              <template slot="header">
+                Title - Author
+              </template>
+              <template slot="content">
+                This is the note for Title - Author
+              </template>
+            </BookCard>
+          </div>
+          <div class="column">
+            <BookCard :rating="3">
+              <template slot="header">
+                Title - Author
+              </template>
+              <template slot="content">
+                This is the note for Title - Author
+              </template>
+            </BookCard>
+          </div>
+        </div>
 
-          <!-- Table Body -->
-          <tbody>
-            <tr v-for="book in books" :key="book['.key']">
-              <td>
-
-                <!-- Book Title Entry -->
-                <!-- <a v-on:click="toggleModal">{{ book.title }}</a> -->
-                <a v-on:click="showModal(book)">{{ book.title }}</a>
-
-                <!-- Modal Note Dialog -->
-                <!-- TODO: Data passing is working, but only on the last item of the list; not sure why -->
-              </td>
-
-              <!-- Author Entry -->
-              <td @click="logBook(book)">{{ book.author }}</td>
-
-              <!-- Remove Entry Button -->
-              <td>
-                <i class="fa fa-trash" aria-hidden="true " v-on:click="removeBook(book) "></i>
-              </td>
-            </tr>
-          </tbody>
-        </table>
       </div>
     </section>
   </div>
@@ -73,6 +92,7 @@
 import { db } from "../config/db.js";
 import NavBar from "../components/NavBar";
 import Modal from "../components/Modal";
+import BookCard from "../components/BookCard";
 
 export default {
   name: "BookTable",
@@ -81,7 +101,8 @@ export default {
   },
   components: {
     NavBar,
-    Modal
+    Modal,
+    BookCard
   },
   data() {
     return {
