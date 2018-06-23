@@ -1,11 +1,12 @@
-User Validation
-  sign in and have your own database of books
+
 
 Transitions
   between pages, etc.
 
 CSS
   Mobile Friendly
+    - Fix navbar to change on mobile
+      - Currently links just stack up on each other.
   Better book table / list appearance
     turn it into cards / sections with shadows
     Let user view their notes without opening the edit modal
@@ -14,8 +15,32 @@ CSS
     Nav links
     about page
 
-Rating system
-  Need to save the ratings to firebase
-    Can I set firebase to only accept certain value types?
+  Find a good website font
+
 
 Test implementing a progress bar
+
+Add finished date to posts
+
+Order?
+  -Allow reordering?
+  -Order by date?
+  -Mess around with electron
+
+
+Precendence:
+  1) Save creation date to database
+
+  2) Set new page as default / add link
+
+  3) User Validation
+      each user should see their own book list
+
+  4) CSS - see above
+
+
+Notes:
+  In order to have multiple rows of columns
+    try to get the books db ref .length
+    nested for loops
+      inner has 3 elements
