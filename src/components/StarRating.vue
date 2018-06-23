@@ -16,6 +16,7 @@
 export default {
   name: "StarRating",
   props: {
+    // bookKey: String,
     rating: Number
   },
   data: function() {
@@ -46,7 +47,7 @@ export default {
       console.log("saved rating");
       this.savedRating = value;
       this.starStyle = "gold";
-      this.$emit("save", this.saveRating);
+      this.$emit("save", this.savedRating);
     }
   },
   mounted: function() {
@@ -60,13 +61,6 @@ export default {
   display: inline-block;
 }
 
-/* .star__unsaved {
-  color: grey;
-}
-
-.star__saved {
-  color: gold;
-} */
 span.icon {
   border: 1px solid black;
 }
