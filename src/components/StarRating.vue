@@ -1,6 +1,10 @@
 <template>
   <div>
-    <span v-for="(index, value) in stars" :key="index" @click="saveRating(index)" @mouseover="mouseOver(index)" @mouseout="mouseOff">
+    <span v-for="(index, value) in stars"
+      :key="index" @click="saveRating(index)"
+      @mouseover="mouseOver(index)"
+      @mouseout="mouseOff">
+
       <span v-if="value < currentRating">
         <i :style="{ color: starStyle }" class="star fa fa-star"></i>
       </span>

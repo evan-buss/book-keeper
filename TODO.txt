@@ -31,12 +31,14 @@ Order?
 Precendence:
   1) Save creation date to database
 
-  2) Set new page as default / add link
+  2) Do multiple rows of different columns
 
-  3) User Validation
+  3) Set new page as default / add link
+
+  4) User Validation
       each user should see their own book list
 
-  4) CSS - see above
+  5) CSS - see above
 
 
 Notes:

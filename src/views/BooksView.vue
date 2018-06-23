@@ -23,7 +23,13 @@
     </section>
 
     <!-- Modal Note-Editor Dialog -->
-    <Modal :bookKey="this.key" :bookNote="this.note" v-if="modalIsActive" @save="saveNote" @close="modalIsActive=false">{{this.title}} by {{this.author}} - Notes</Modal>
+    <Modal :bookKey="this.key"
+      :bookNote="this.note"
+      v-if="modalIsActive"
+      @save="saveNote"
+      @close="modalIsActive=false">
+        {{this.title}} by {{this.author}} - Notes
+    </Modal>
 
     <!-- Content Section -->
     <section class="section">
@@ -33,7 +39,12 @@
 
           <!-- TODO: Figure out how to create multiple columns -->
           <div class="column">
-            <BookCard @saveRating="handleRating($event, book['.key'])" :rating="book.rating" @removeBook="removeBook" @remove="removeBook(book)" @showModal="showModal(book)">
+            <BookCard
+              :rating="book.rating"
+              @remove="removeBook(book)"
+              @removeBook="removeBook"
+              @showModal="showModal(book)"
+              @saveRating="handleRating($event, book['.key'])">
               <template slot="header">
                 {{ book.title }} - {{ book.author }}
               </template>

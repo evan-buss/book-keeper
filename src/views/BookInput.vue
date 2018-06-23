@@ -32,10 +32,22 @@
           <div class="field">
             <label class="label" for="bookTitle">Title:</label>
             <div class="control">
-              <input v-validate.disable="'required|min:2'" name="title" class="input" type="text" id="bookTitle" placeholder="Book Title" v-model="newBook.title" autocomplete="off">
+              <input class="input"
+                autocomplete="off"
+                id="bookTitle"
+                name="title"
+                placeholder="Book Title"
+                type="text"
+                v-validate.disable="'required|min:2'"
+                v-model="newBook.title">
 
               <!-- Validation Error Popup-->
-              <transition v-if="errors.has('title')" name="fade" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+              <transition
+                name="fade"
+                enter-active-class="animated fadeIn"
+                leave-active-class="animated fadeOut"
+                v-if="errors.has('title')">
+
                 <article class="alert message is-danger is-small">
                   <div class="message-body">
                     {{ errors.first('title') }}
@@ -50,10 +62,21 @@
           <div class="field">
             <label class="label" for="bookAuthor">Author:</label>
             <div class="control">
-              <input v-validate.disable="'required|min:2'" name="author" class="input" type="text" id="bookAuthor" placeholder="Book Author" v-model="newBook.author" autocomplete="off">
+              <input class="input"
+                autocomplete="off"
+                id="bookAuthor"
+                name="author"
+                placeholder="Book Author"
+                type="text"
+                v-validate.disable="'required|min:2'"
+                v-model="newBook.athor">
 
               <!-- Validation Error Popup-->
-              <transition v-if="errors.has('author')" name="fade" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+              <transition name="fade"
+                v-if="errors.has('author')"
+                enter-active-class="animated fadeIn"
+                leave-active-class="animated fadeOut">
+
                 <article class="alert message is-danger is-small">
                   <div class="message-body">
                     {{ errors.first('author') }}
@@ -63,7 +86,7 @@
 
             </div>
           </div>
-          <!-- <input type="submit" class="button is-primary" :title="{ Disabled: true, button }" value="Add Book"> -->
+
           <input type="submit" class="button is-primary" value="Add Book">
 
         </form>
