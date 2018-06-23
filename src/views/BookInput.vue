@@ -132,4 +132,7 @@ export default {
 </script>
 
 <style scoped>
+input {
+  font-family: "Fira Sans";
+}
 </style>
