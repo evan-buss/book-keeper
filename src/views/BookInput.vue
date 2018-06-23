@@ -121,6 +121,7 @@ export default {
     addBook: function() {
       this.$validator.validateAll().then(result => {
         if (result) {
+          this.newBook.date = new Date().toLocaleDateString("en-US").toString();
           this.$firebaseRefs.books.push(this.newBook);
           this.newBook.title = "";
           this.newBook.author = "";

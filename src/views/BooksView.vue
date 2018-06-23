@@ -50,6 +50,8 @@
               </template>
               <template slot="content">
                 {{ book.note }}
+              <template v-if="book.date != ''" slot="date">
+                {{ book.date}}
               </template>
             </BookCard>
           </div>
