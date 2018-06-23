@@ -22,62 +22,23 @@
       </div>
     </section>
 
+    <!-- Modal Note-Editor Dialog -->
+    <Modal :bookKey="this.key" :bookNote="this.note" v-if="modalIsActive" @save="saveNote" @close="modalIsActive=false">{{this.title}} by {{this.author}} - Notes</Modal>
+
     <!-- Content Section -->
     <section class="section">
       <div class="container is-fluid">
-
         <!-- Columns -->
-        <div class="columns">
-          <div class="column">
-            <BookCard :rating="4">
-              <template slot="header">
-                Title - Author
-              </template>
-              <template slot="content">
-                This is the note for Title - Author
-              </template>
-            </BookCard>
-          </div>
-          <div class="column">
-            <BookCard :rating="0">
-              <template slot="header">
-                Title - Author
-              </template>
-              <template slot="content">
-                This is the note for Title - Author
-              </template>
-            </BookCard>
-          </div>
-        </div>
+        <div v-for="book in books" :key="book['.key']" class="columns">
 
-        <div class="columns">
+          <!-- TODO: Figure out how to create multiple columns -->
           <div class="column">
-            <BookCard :rating="1">
+            <BookCard @saveRating="handleRating($event, book['.key'])" :rating="book.rating" @removeBook="removeBook" @remove="removeBook(book)" @showModal="showModal(book)">
               <template slot="header">
-                Title - Author
+                {{ book.title }} - {{ book.author }}
               </template>
               <template slot="content">
-                This is the note for Title - Author
-              </template>
-            </BookCard>
-          </div>
-          <div class="column">
-            <BookCard :rating="2">
-              <template slot="header">
-                Title - Author
-              </template>
-              <template slot="content">
-                This is the note for Title - Author
-              </template>
-            </BookCard>
-          </div>
-          <div class="column">
-            <BookCard :rating="3">
-              <template slot="header">
-                Title - Author
-              </template>
-              <template slot="content">
-                This is the note for Title - Author
+                {{ book.note }}
               </template>
             </BookCard>
           </div>
@@ -100,13 +61,14 @@ export default {
     books: db.ref("books")
   },
   components: {
+    BookCard,
     NavBar,
-    Modal,
-    BookCard
+    Modal
   },
   data() {
     return {
       modalIsActive: false,
+      // might not need because I never change the value
       key: "",
       title: "",
       author: "",
@@ -129,13 +91,24 @@ export default {
     // Save the note to database and close the modal
     saveNote: function(data) {
       // update the firebase note value to the local note
+      console.log("key: " + data[0] + " data: " + data[1]);
       this.$firebaseRefs.books
         .child(data[0])
         .child("note")
         .set(data[1]);
       console.log("Should be saved to firebase...");
       this.modalIsActive = false;
-      data[1] = "";
+      // ! FIXME: check if this is needed to work
+      // data[1] = "";
+    },
+    handleRating: function(rating, key) {
+      this.$firebaseRefs.books
+        .child(key)
+        .child("rating")
+        .set(rating);
+      console.log("key: " + key);
+      console.log("rating to save " + rating);
+      console.log("rating should be save to firebase");
     }
   }
 };

@@ -5,7 +5,7 @@
         <slot name="header"></slot>
       </p>
       <div class="card-header-icon">
-        <StarRating :rating="rating"></StarRating>
+        <StarRating @save="ratingToParent" :rating="rating"></StarRating>
       </div>
     </header>
     <div class="card-content">
@@ -16,9 +16,11 @@
       </div>
     </div>
     <footer class="card-footer">
-      <a href="#" class="card-footer-item">Rate</a>
-      <a href="#" class="card-footer-item">Edit</a>
-      <a href="#" class="card-footer-item">Delete</a>
+      <div class="card-footer-item">
+        <p>{{ new Date() }}</p>
+      </div>
+      <a @click="$emit('showModal')" class="card-footer-item">Edit</a>
+      <a @click="$emit('remove')" class="card-footer-item">Delete</a>
     </footer>
   </div>
 </template>
@@ -28,6 +30,9 @@ import StarRating from "./StarRating";
 
 export default {
   name: "BookCard",
+  props: {
+    // bookKey: String
+  },
   components: {
     StarRating
   },
@@ -35,11 +40,20 @@ export default {
     rating: Number
   },
   data: function() {
-    return {};
+    return {
+      emitRating: null
+      // dateString: "mm-dd-yyyy"
+    };
   },
   methods: {
     debugLog: function(message) {
       console.log(message);
+    },
+    ratingToParent: function(rating) {
+      // * FIXME: might not need to offload to local variable, test this
+      console.log("Rating passed to card: " + rating);
+      this.emitRating = rating;
+      this.$emit("saveRating", this.emitRating);
     }
   }
 };

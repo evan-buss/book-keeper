@@ -89,7 +89,8 @@ export default {
       newBook: {
         title: "",
         author: "",
-        note: "Empty Note"
+        note: "What did you think of the book?",
+        rating: 0
       }
     };
   },
