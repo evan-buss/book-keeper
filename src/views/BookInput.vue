@@ -69,7 +69,7 @@
                 placeholder="Book Author"
                 type="text"
                 v-validate.disable="'required|min:2'"
-                v-model="newBook.athor">
+                v-model="newBook.author">
 
               <!-- Validation Error Popup-->
               <transition name="fade"
@@ -112,7 +112,8 @@ export default {
       newBook: {
         title: "",
         author: "",
-        note: "What did you think of the book?",
+        note: "",
+        date: "",
         rating: 0
       }
     };
@@ -123,6 +124,12 @@ export default {
         if (result) {
           this.newBook.date = new Date().toLocaleDateString("en-US").toString();
           this.$firebaseRefs.books.push(this.newBook);
+          console.log(
+            "adding title: " +
+              this.newBook.title +
+              " author: " +
+              this.newBook.author
+          );
           this.newBook.title = "";
           this.newBook.author = "";
         }

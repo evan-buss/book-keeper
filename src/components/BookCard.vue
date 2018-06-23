@@ -10,14 +10,18 @@
     </header>
     <div class="card-content">
       <div class="content">
-        <slot name="content">
-          Default slot content. Enter custom info using the content slot.
+        <slot name="text">
+          Default slot content. Enter custom info using the text slot.
         </slot>
       </div>
     </div>
     <footer class="card-footer">
       <div class="card-footer-item">
-        <p>{{ new Date() }}</p>
+        <p style="color: #3273e1;">
+          <slot name="date">
+            No Date
+          </slot>
+        </p>
       </div>
       <a @click="$emit('showModal')" class="card-footer-item">Edit</a>
       <a @click="$emit('remove')" class="card-footer-item">Delete</a>
@@ -30,9 +34,6 @@ import StarRating from "./StarRating";
 
 export default {
   name: "BookCard",
-  props: {
-    // bookKey: String
-  },
   components: {
     StarRating
   },
@@ -61,4 +62,11 @@ export default {
 
 
 <style scoped>
+StarRating {
+  width: 95px;
+}
+
+.dateSlot {
+  color: #3273e1;
+}
 </style>

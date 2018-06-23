@@ -35,28 +35,32 @@
     <section class="section">
       <div class="container is-fluid">
         <!-- Columns -->
-        <div v-for="book in books" :key="book['.key']" class="columns">
-
-          <!-- TODO: Figure out how to create multiple columns -->
-          <div class="column">
+        <!-- divide by the number of items per row you want to have -->
+        <div class="gridContainer">
+          <div v-for="book in books" :key="book['.key']">
             <BookCard
-              :rating="book.rating"
+              :rating="Number(book.rating)"
               @remove="removeBook(book)"
-              @removeBook="removeBook"
               @showModal="showModal(book)"
               @saveRating="handleRating($event, book['.key'])">
+
               <template slot="header">
                 {{ book.title }} - {{ book.author }}
               </template>
-              <template slot="content">
-                {{ book.note }}
+              <template slot="text">
+                <p v-if="book.note != ''">
+                  {{ book.note }}
+                </p>
+                <p v-else style="color: lightgrey;">
+                  Tell the world what you thought of the book!
+                </p>
+              </template>
               <template v-if="book.date != ''" slot="date">
                 {{ book.date}}
               </template>
             </BookCard>
           </div>
         </div>
-
       </div>
     </section>
   </div>
@@ -85,7 +89,8 @@ export default {
       key: "",
       title: "",
       author: "",
-      note: ""
+      note: "",
+      colLen: 3
     };
   },
   methods: {
@@ -111,8 +116,6 @@ export default {
         .set(data[1]);
       console.log("Should be saved to firebase...");
       this.modalIsActive = false;
-      // ! FIXME: check if this is needed to work
-      // data[1] = "";
     },
     handleRating: function(rating, key) {
       this.$firebaseRefs.books
@@ -128,4 +131,18 @@ export default {
 </script>
 
 <style scoped>
+.gridContainer {
+  display: grid;
+  grid-gap: 0.75em;
+  /* grid-template-columns: repeat(4, 1fr); */
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-auto-flow: row;
+}
+
+@media only screen and (max-width: 500px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
