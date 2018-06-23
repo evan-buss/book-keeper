@@ -1,9 +1,11 @@
-
-
 Transitions
   between pages, etc.
+    -page in Vue docs about how to do this
+
+  add and delete transitions on card
 
 CSS
+  Clean up page headers.
   Mobile Friendly
     - Fix navbar to change on mobile
       - Currently links just stack up on each other.
@@ -15,23 +17,30 @@ CSS
     Nav links
     about page
 
+  Change style of the note when it is just the default placeholder text.
+
   Find a good website font
+
+  Alert on book input after adding a book
 
 
 Test implementing a progress bar
 
 Add finished date to posts
 
-Order?
-  -Allow reordering?
-  -Order by date?
-  -Mess around with electron
+Figure out how to keep stars from changing shape when resized
 
+Progress bar?
+  users can update their current progress in the book atm
+
+Order?
+ order by date
+
+Create android app that just shows the website
 
 Precendence:
   1) Save creation date to database
 
-  2) Do multiple rows of different columns
 
   3) Set new page as default / add link
 
@@ -40,9 +49,9 @@ Precendence:
 
   5) CSS - see above
 
+Low-Tier:
+  Reset button on star-rating
+  Make components universal (ie. remove references to notes / project specific names)
 
-Notes:
-  In order to have multiple rows of columns
-    try to get the books db ref .length
-    nested for loops
-      inner has 3 elements
+  research differences between flex box and grid
+    find out when to use which
