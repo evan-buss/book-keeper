@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import { db } from "../config/db.js";
+import { db } from "../db.js";
 import NavBar from "../components/NavBar";
 import Modal from "../components/Modal";
 import BookCard from "../components/BookCard";
@@ -134,8 +134,6 @@ export default {
 .gridContainer {
   display: grid;
   grid-gap: 0.75em;
-  /* grid-template-columns: repeat(4, 1fr); */
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-auto-flow: row;
 }

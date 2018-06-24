@@ -19,6 +19,7 @@
         <router-link to="/table" class="navbar-item">Book Table</router-link>
       </div>
       <div class="navbar-end">
+        <router-link to="/about" class="navbar-item">About</router-link>
         <!-- TODO: copy github link from other project and put a link to the repo here -->
       </div>
     </div>

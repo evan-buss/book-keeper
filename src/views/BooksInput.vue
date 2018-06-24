@@ -102,7 +102,7 @@
 </template>
 
 <script>
-import { db } from "../config/db.js";
+import { db } from "../db.js";
 import NavBar from "../components/NavBar";
 
 export default {
