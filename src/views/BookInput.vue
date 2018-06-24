@@ -30,9 +30,10 @@
 
           <!-- Book Title Field -->
           <div class="field">
-            <label class="label" for="bookTitle">Title:</label>
-            <div class="control">
+            <label class="label">Title:</label>
+            <div class="control has-icons-left has-icons-right">
               <input class="input"
+                :class="{ 'is-danger': errors.has('title') }"
                 autocomplete="off"
                 id="bookTitle"
                 name="title"
@@ -41,28 +42,30 @@
                 v-validate.disable="'required|min:2'"
                 v-model="newBook.title">
 
+              <span class="icon is-small is-left">
+                <i class="fa fa-book"></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fa fa-exclamation-triangle" v-if="errors.has('title')"></i>
+              </span>
+            </div>
               <!-- Validation Error Popup-->
-              <transition
-                name="fade"
+              <transition name="fade"
                 enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut"
                 v-if="errors.has('title')">
-
-                <article class="alert message is-danger is-small">
-                  <div class="message-body">
-                    {{ errors.first('title') }}
-                  </div>
-                </article>
+                 <p class="help is-danger">{{ errors.first('title') }}</p>
               </transition>
 
-            </div>
+
           </div>
 
           <!-- Book Author Field -->
           <div class="field">
             <label class="label" for="bookAuthor">Author:</label>
-            <div class="control">
+            <div class="control has-icons-left has-icons-right">
               <input class="input"
+                :class="{ 'is-danger': errors.has('author') }"
                 autocomplete="off"
                 id="bookAuthor"
                 name="author"
@@ -71,20 +74,23 @@
                 v-validate.disable="'required|min:2'"
                 v-model="newBook.author">
 
+              <span class="icon is-small is-left">
+                <i class="fa fa-user" ></i>
+              </span>
+              <span class="icon is-small is-right">
+                <i class="fa fa-exclamation-triangle" v-if="errors.has('author')"></i>
+              </span>
+            </div>
+
               <!-- Validation Error Popup-->
               <transition name="fade"
                 v-if="errors.has('author')"
                 enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut">
-
-                <article class="alert message is-danger is-small">
-                  <div class="message-body">
-                    {{ errors.first('author') }}
-                  </div>
-                </article>
+                <p class="help is-danger">{{ errors.first('author') }}</p>
               </transition>
 
-            </div>
+
           </div>
 
           <input type="submit" class="button is-primary" value="Add Book">
@@ -142,5 +148,15 @@ export default {
 <style scoped>
 input {
   font-family: "Fira Sans";
+}
+.control {
+  width: 75%;
+  margin: auto;
+}
+@media only screen and (max-width: 500px) {
+  .control {
+    width: 100%;
+    margin: 0.75em auto;
+  }
 }
 </style>
