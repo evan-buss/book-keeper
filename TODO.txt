@@ -1,57 +1,63 @@
-Transitions
-  between pages, etc.
-    -page in Vue docs about how to do this
+Transitions:
+  - Between pages
+  - On load / delete of book cards
 
-  add and delete transitions on card
+CSS:
+  - Default placeholder note should have a different style to stand out
+  - Top right alert box that times out after a few seconds every time a book is added / deleted
 
-CSS
-  Clean up page headers.
-  Mobile Friendly
-    - Fix navbar to change on mobile
-      - Currently links just stack up on each other.
-  Better book table / list appearance
-    turn it into cards / sections with shadows
-    Let user view their notes without opening the edit modal
-  Sidebar for mobile
-    Account Info
-    Nav links
-    about page
+Rebuild Project with cleaner structure:
+  New vue-cli without webpack
+  better file structure
 
-  Change style of the note when it is just the default placeholder text.
-
-  Find a good website font
-
-  Alert on book input after adding a book
-
+title icon
+  figure out how to make it work
 
 Test implementing a progress bar
 
-Add finished date to posts
-
 Figure out how to keep stars from changing shape when resized
 
-Progress bar?
-  users can update their current progress in the book atm
+Progress Bar:
+  - Users can change their current book status
 
-Order?
- order by date
-
-Create android app that just shows the website
+Android app with a webview that just loads the website
+  - Would help learn about a simple webapp
 
 Precendence:
-  1) Save creation date to database
+  1) alerts
 
+  2) clean up code
+      remove many of the console logs
 
-  3) Set new page as default / add link
-
-  4) User Validation
-      each user should see their own book list
-
-  5) CSS - see above
+  3) User Validation
+      - Users have their own accounts and book lists
 
 Low-Tier:
+  dark mode
+
+  more buttons
+
+  make home icon rotate on hover
+
+  Page footers?
+
+  Create an about page
+    details the project structure and frameworks
+  Add link to homepage
+
   Reset button on star-rating
+
   Make components universal (ie. remove references to notes / project specific names)
 
-  research differences between flex box and grid
-    find out when to use which
+  Better documentation
+
+  use something like this to hide alerts after a period of time
+    - undo button?
+
+  alert() {
+    this.hideElt = false;
+    setTimeout(() => {
+      this.hideElt = true;
+      this.resetModal();
+    }, 4000);
+  }
