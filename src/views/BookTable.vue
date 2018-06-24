@@ -13,7 +13,7 @@
       <div class="hero-body">
         <div class="container">
           <h1 class="title">
-            View Your Books
+            Books Table (old)
           </h1>
           <h1 class="title is-2">
             <span class="icon has-text-dark">
@@ -70,51 +70,54 @@
 </template>
 
 <script>
-import { db } from '../config/db.js';
-import NavBar from '../components/NavBar';
-import Modal from '../components/Modal';
+import { db } from "../config/db.js";
+import NavBar from "../components/NavBar";
+import Modal from "../components/Modal";
 
 export default {
-  name: 'BookTable',
+  name: "BookTable",
   firebase: {
-    books: db.ref("books"),
+    books: db.ref("books")
   },
   components: {
     NavBar,
     Modal
   },
-  data () {
+  data() {
     return {
       modalIsActive: false,
       key: "",
       title: "",
       author: "",
       note: ""
-    }
+    };
   },
   methods: {
     // Remove the book from the database
-    removeBook: function (book) {
-      this.$firebaseRefs.books.child(book['.key']).remove()
+    removeBook: function(book) {
+      this.$firebaseRefs.books.child(book[".key"]).remove();
     },
     // Show the modal and view / edit the note
-    showModal: function (book) {
+    showModal: function(book) {
       this.modalIsActive = true;
-      this.key = book['.key'];
+      this.key = book[".key"];
       this.title = book.title;
       this.author = book.author;
       this.note = book.note;
     },
     // Save the note to database and close the modal
-    saveNote: function (data) {
+    saveNote: function(data) {
       // update the firebase note value to the local note
-      this.$firebaseRefs.books.child(data[0]).child('note').set(data[1]);
+      this.$firebaseRefs.books
+        .child(data[0])
+        .child("note")
+        .set(data[1]);
       console.log("Should be saved to firebase...");
       this.modalIsActive = false;
       data[1] = "";
-    },
+    }
   }
-}
+};
 </script>
 
 <style scoped>
