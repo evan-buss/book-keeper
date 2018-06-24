@@ -1,5 +1,5 @@
 <template>
-  <div class="modal is-active">
+  <div @keydown.ctrl.enter="$emit('save', [key, note] )" class="modal is-active">
 
     <!-- Transparent Background -->
     <div @click="$emit('close')" class="modal-background"></div>
@@ -17,15 +17,14 @@
 
       <!-- Card Body -->
       <section class="modal-card-body">
-        <!-- <textarea class="textarea is-focused" v-model="note" placeholder="This was a great book!"></textarea> -->
-        <textarea class="textarea is-focused" v-model="note" placeholder="This was a great book!"></textarea>
+        <textarea class="textarea is-focused" ref="note" v-model="note" placeholder="This was a great book!"></textarea>
         <button class="button" @click="logBook">Log to Console</button>
       </section>
 
       <!-- Card Footer -->
       <footer class="modal-card-foot">
-        <button @click="$emit('save', [key, note] )" class=" button is-success ">Save changes</button>
-        <button @click="$emit('close')" class="button ">Cancel</button>
+        <button @click="$emit('save', [key, note])" class=" button is-success ">Save changes</button>
+        <button @click="$emit('close')" class="button">Cancel</button>
       </footer>
     </div>
   </div>
@@ -49,6 +48,9 @@ export default {
       console.log(this.key);
       console.log(this.note);
     }
+  },
+  mounted: function() {
+    this.$refs.note.focus();
   }
 };
 </script>
