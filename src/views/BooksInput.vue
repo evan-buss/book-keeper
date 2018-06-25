@@ -26,13 +26,13 @@
 
     <section class="section">
       <div class="container is-fluid">
-        <form id="form" v-on:submit.prevent="addBook">
+        <form @submit="this.focusInput" id="form" v-on:submit.prevent="addBook">
 
           <!-- Book Title Field -->
           <div class="field">
             <label class="label">Title:</label>
             <div class="control has-icons-left has-icons-right">
-              <input class="input"
+              <input class="input" ref="title"
                 :class="{ 'is-danger': errors.has('title') }"
                 autocomplete="off"
                 id="bookTitle"
@@ -50,13 +50,11 @@
               </span>
             </div>
               <!-- Validation Error Popup-->
-              <transition name="fade"
-                enter-active-class="animated fadeIn"
-                leave-active-class="animated fadeOut"
-                v-if="errors.has('title')">
-                 <p class="help is-danger">{{ errors.first('title') }}</p>
+              <transition name="bounce"
+                enter-active-class="animated bounceIn"
+                leave-active-class="animated bounceOut">
+                 <p v-if="errors.has('title')" class="help is-danger">{{ errors.first('title') }}</p>
               </transition>
-
 
           </div>
 
@@ -83,18 +81,15 @@
             </div>
 
               <!-- Validation Error Popup-->
-              <transition name="fade"
-                v-if="errors.has('author')"
-                enter-active-class="animated fadeIn"
-                leave-active-class="animated fadeOut">
-                <p class="help is-danger">{{ errors.first('author') }}</p>
+              <transition name="bounce"
+                enter-active-class="animated bounceIn"
+                leave-active-class="animated bounceOut">
+                <p class="help is-danger" v-if="errors.has('author')">
+                  {{ errors.first('author') }}
+                </p>
               </transition>
-
-
           </div>
-
           <input type="submit" class="button is-primary" value="Add Book">
-
         </form>
       </div>
     </section>
@@ -140,7 +135,13 @@ export default {
           this.newBook.author = "";
         }
       });
+    },
+    focusInput: function() {
+      this.$refs.title.focus();
     }
+  },
+  mounted: function() {
+    this.focusInput();
   }
 };
 </script>
