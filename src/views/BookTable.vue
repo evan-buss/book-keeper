@@ -45,19 +45,9 @@
           <tbody>
             <tr v-for="book in books" :key="book['.key']">
               <td>
-
-                <!-- Book Title Entry -->
-                <!-- <a v-on:click="toggleModal">{{ book.title }}</a> -->
                 <a v-on:click="showModal(book)">{{ book.title }}</a>
-
-                <!-- Modal Note Dialog -->
-                <!-- TODO: Data passing is working, but only on the last item of the list; not sure why -->
               </td>
-
-              <!-- Author Entry -->
               <td @click="logBook(book)">{{ book.author }}</td>
-
-              <!-- Remove Entry Button -->
               <td>
                 <i class="fa fa-trash" aria-hidden="true " v-on:click="removeBook(book) "></i>
               </td>

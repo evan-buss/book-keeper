@@ -1,6 +1,9 @@
+focus text box on input page load
+
 Transitions:
   - Between pages
   - On load / delete of book cards
+    - Can't get the load transition to work
 
 CSS:
   - Default placeholder note should have a different style to stand out
