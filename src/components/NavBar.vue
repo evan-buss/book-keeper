@@ -2,6 +2,13 @@
   <!-- Navigation Bar -->
   <nav class="navbar is-spaced">
     <div class="navbar-brand">
+      <span class="navbar-item nav-logo is-hidden-desktop">
+        <span class="icon">
+          <a href="https://github.com/evan-buss/book-list" style="font-size:35px;">
+            <i class="fa fa-github"></i>
+          </a>
+        </span>
+      </span>
       <div @click="navActive = !navActive" class="navbar-burger">
         <a role="button" class="navbar-burger" :class="{ 'is-active': navActive }" aria-label="menu" aria-expanded="false">
           <span aria-hidden="true"></span>
@@ -10,7 +17,6 @@
         </a>
       </div>
     </div>
-
     <div class="navbar-menu" :class="{ 'is-active': navActive }">
       <div class="navbar-start">
         <router-link to="/" class="navbar-item">Home</router-link>
@@ -27,7 +33,6 @@
             <i class="fa fa-github"></i>
           </a>
         </span>
-        <!-- TODO: copy github link from other project and put a link to the repo here -->
       </div>
     </div>
   </nav>

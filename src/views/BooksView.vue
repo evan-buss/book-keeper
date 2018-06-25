@@ -34,33 +34,36 @@
     <!-- Content Section -->
     <section class="section">
       <div class="container is-fluid">
-        <!-- Columns -->
-        <!-- divide by the number of items per row you want to have -->
-        <div class="gridContainer">
-          <div v-for="book in books" :key="book['.key']">
-            <BookCard
-              :rating="Number(book.rating)"
-              @remove="removeBook(book)"
-              @showModal="showModal(book)"
-              @saveRating="handleRating($event, book['.key'])">
-
-              <template slot="header">
-                {{ book.title }} - {{ book.author }}
-              </template>
-              <template slot="text">
-                <p v-if="book.note != ''">
-                  {{ book.note }}
-                </p>
-                <p v-else style="color: lightgrey;">
-                  Tell the world what you thought of the book!
-                </p>
-              </template>
-              <template v-if="book.date != ''" slot="date">
-                {{ book.date}}
-              </template>
-            </BookCard>
-          </div>
-        </div>
+          <transition-group
+            class="columns is-multiline"
+            name="card-transition"
+            enter-to-class="animated fadeIn"
+            leave-active-class="animated fadeOut">
+            <template v-for="book in books">
+              <div class="column is-one-third" :key="book['.key']">
+                <BookCard
+                  :rating="Number(book.rating)"
+                  @remove="removeBook(book)"
+                  @showModal="showModal(book)"
+                  @saveRating="handleRating($event, book['.key'])">
+                  <template slot="header">
+                    {{ book.title }} - {{ book.author }}
+                  </template>
+                  <template slot="text">
+                    <p v-if="book.note != ''">
+                      {{ book.note }}
+                    </p>
+                    <p v-else style="color: lightgrey;">
+                      Tell the world what you thought of the book!
+                    </p>
+                  </template>
+                  <template v-if="book.date!=''" slot="date">
+                    {{ book.date}}
+                  </template>
+                </BookCard>
+              </div>
+            </template>
+         </transition-group>
       </div>
     </section>
   </div>
@@ -142,5 +145,17 @@ export default {
   .gridContainer {
     grid-template-columns: 1fr;
   }
+}
+/* .columns {
+  flex-wrap: wrap;
+} */
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
