@@ -17,9 +17,15 @@
         <router-link to="/input" class="navbar-item">Add a Book</router-link>
         <router-link to="/books" class="navbar-item">Your Books</router-link>
         <router-link to="/table" class="navbar-item">Book Table</router-link>
+        <router-link to="/about" class="navbar-item">About</router-link>
       </div>
       <div class="navbar-end">
-        <router-link to="/about" class="navbar-item">About</router-link>
+
+        <span class="navbar-item nav-logo is-hidden-mobile">
+          <a href="https://github.com/evan-buss/book-list" style="font-size: 45px;">
+            <i class="fa fa-github"></i>
+          </a>
+        </span>
         <!-- TODO: copy github link from other project and put a link to the repo here -->
       </div>
     </div>
