@@ -51,6 +51,7 @@
                 v-validate.disable="'required|min:2'"
                 v-model="newBook.title">
 
+              <!-- Input bar icons -->
               <span class="icon is-small is-left">
                 <i class="fa fa-book"></i>
               </span>
@@ -81,6 +82,7 @@
                 v-validate.disable="'required|min:2'"
                 v-model="newBook.author">
 
+              <!-- Input bar icons -->
               <span class="icon is-small is-left">
                 <i class="fa fa-user" ></i>
               </span>
@@ -98,7 +100,12 @@
                 </p>
               </transition>
           </div>
-          <input type="submit" class="button is-primary" value="Add Book">
+
+          <!-- Button Row -->
+          <div class="buttons">
+              <input type="submit" class="button is-primary" value="Add Book">
+              <router-link to="/books" class="button">Your Books</router-link>
+          </div>
         </form>
       </div>
     </section>
@@ -162,6 +169,10 @@ export default {
 </script>
 
 <style scoped>
+div.buttons {
+  display: inline-block;
+}
+
 input {
   font-family: "Fira Sans";
 }

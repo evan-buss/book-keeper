@@ -1,32 +1,13 @@
-Upload to website before going to bed
+Figure out how to get better comments in text files
 
 Notifications figure out how:
   - notifications stack vertically instead of covering each other.
   - might have a button to close the undo notification without undoing
-  - figure out how to have an undo button on the message
-    - can have a visible property on each card?
-      - this would let me keep the same order
-
-Transitions:
-  - Between pages
-  - modal
-  - On load / delete of book cards
-    - current card delete animation is too slow
-    - Can't get the load transition to work
 
 CSS:
-  - Default placeholder note should have a different style to stand out
-  - Top right alert box that times out after a few seconds every time a book is added / deleted
-
-Figure out how to keep stars from changing shape when resized
+  Figure out how to keep stars from changing shape when resized
 
 Precendence:
-  2) clean up code
-      remove many of the console logs
-
-  3) User Validation
-      - Users have their own accounts and book lists
-
 Low-Tier:
   dark mode - toggle switch
 
@@ -38,9 +19,11 @@ Low-Tier:
 
   Reset button on star-rating
 
-  Make components universal (ie. remove references to notes / project specific names)
-
-  Better documentation
+  only include used components
+    bulma components
+    firebase components
+      database
+      authentication
 
 IDEAS:
     Android app with a webview that just loads the website
