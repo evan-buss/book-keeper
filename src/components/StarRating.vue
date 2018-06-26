@@ -32,9 +32,6 @@ export default {
     };
   },
   methods: {
-    debugLog: function(message) {
-      console.log(message);
-    },
     init: function() {
       if (this.rating != 0) {
         this.starStyle = "gold";
@@ -48,7 +45,6 @@ export default {
       this.currentRating = this.savedRating;
     },
     saveRating: function(value) {
-      console.log("saved rating");
       this.savedRating = value;
       this.starStyle = "gold";
       this.$emit("save", this.savedRating);

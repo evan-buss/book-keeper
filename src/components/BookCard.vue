@@ -48,9 +48,6 @@ export default {
     };
   },
   methods: {
-    debugLog: function(message) {
-      console.log(message);
-    },
     ratingToParent: function(rating) {
       // * FIXME: might not need to offload to local variable, test this
       console.log("Rating passed to card: " + rating);

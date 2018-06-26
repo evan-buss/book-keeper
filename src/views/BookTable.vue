@@ -102,7 +102,6 @@ export default {
         .child(data[0])
         .child("note")
         .set(data[1]);
-      console.log("Should be saved to firebase...");
       this.modalIsActive = false;
       data[1] = "";
     }
