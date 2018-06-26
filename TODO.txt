@@ -1,26 +1,26 @@
-Notifications:
-  - how to have a link to a certain part of the page on notifcation
-    click
+Upload to website before going to bed
+
+Notifications figure out how:
+  - notifications stack vertically instead of covering each other.
+  - might have a button to close the undo notification without undoing
+  - figure out how to have an undo button on the message
+    - can have a visible property on each card?
+      - this would let me keep the same order
 
 Transitions:
   - Between pages
+  - modal
   - On load / delete of book cards
+    - current card delete animation is too slow
     - Can't get the load transition to work
 
 CSS:
   - Default placeholder note should have a different style to stand out
   - Top right alert box that times out after a few seconds every time a book is added / deleted
 
-Test implementing a progress bar
-
 Figure out how to keep stars from changing shape when resized
 
-Progress Bar:
-  - Users can change their current book status
-
 Precendence:
-  1) alerts
-
   2) clean up code
       remove many of the console logs
 
@@ -28,7 +28,7 @@ Precendence:
       - Users have their own accounts and book lists
 
 Low-Tier:
-  dark mode
+  dark mode - toggle switch
 
   more buttons to easily switch views after adding a book
 
@@ -41,7 +41,6 @@ Low-Tier:
   Make components universal (ie. remove references to notes / project specific names)
 
   Better documentation
-
 
 IDEAS:
     Android app with a webview that just loads the website
