@@ -23,21 +23,26 @@
     </section>
 
     <!-- Modal Note-Editor Dialog -->
-    <Modal :bookKey="modal.key"
-      :bookNote="modal.note"
-      v-if="showModal"
-      @save="saveNote"
-      @close="showModal=false">
-        {{modal.title}} by {{modal.author}} - Notes
-    </Modal>
+
+    <transition name="modal-transition"
+        enter-active-class="animated slideInLeft"
+        leave-active-class="animated slideOutRight">
+      <Modal :bookKey="modal.key"
+        :bookNote="modal.note"
+        v-if="showModal"
+        @save="saveNote"
+        @close="showModal=false">
+          {{modal.title}} by {{modal.author}} - Notes
+      </Modal>
+    </transition>
 
     <!-- Content Section -->
     <section class="section">
       <!-- Message Popup -->
-      <transition name="display-message"
+      <transition name="message-transition"
         enter-active-class="animated bounceIn"
         leave-active-class="animated fadeOut">
-        <Message :isProgress="true"  :time="6" messageType="is-danger" v-if="showMessage"  @messageClose="undoDelete">
+        <Message :isProgress="true"  :time="6" messageType="is-danger" v-if="showMessage"  @messageClose="this.showMessage=false" @undoDelete="undoDelete">
          Book Deleted! Click to undo...
         </Message>
       </transition>

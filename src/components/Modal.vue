@@ -3,10 +3,8 @@
 
     <!-- Transparent Background -->
     <div @click="$emit('close')" class="modal-background"></div>
-
-    <!-- Moda Card -->
+    <!-- Modal Card -->
     <div class="modal-card">
-
       <!-- Card Header -->
       <header class="modal-card-head">
         <p class="modal-card-title">

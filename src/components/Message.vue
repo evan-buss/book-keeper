@@ -33,6 +33,7 @@ export default {
     };
   },
   methods: {
+    // shows the message for a certain period of time before closing it
     displayTime: function() {
       setTimeout(() => {
         this.handleClick();
@@ -40,7 +41,13 @@ export default {
     },
     handleClick: function() {
       this.display = false;
-      this.$emit("messageClose");
+      // if the message is a progress bar, clicking it undoes a deletion
+      if (this.isProgress) {
+        this.$emit("undoDelete");
+        // otherwise a click just closes the message
+      } else {
+        this.$emit("messageClose");
+      }
     },
     frame: function() {
       if (this.width >= 100) {
@@ -51,6 +58,7 @@ export default {
       }
     }
   },
+  // on mount start progress bar or start message display time
   mounted: function() {
     if (this.isProgress) {
       this.id = setInterval(this.frame, this.time * 1000 / 100);
