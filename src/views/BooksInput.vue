@@ -24,7 +24,16 @@
       </div>
     </section>
 
+
     <section class="section">
+      <transition name="display-message"
+        enter-active-class="animated bounceIn"
+        leave-active-class="animated fadeOut">
+        <Message v-if="showMessage"  @messageClose="handleClose">
+          {{ title }} by {{ author }} has been added to your library!
+        </Message>
+      </transition>
+
       <div class="container is-fluid">
         <form @submit="this.focusInput" id="form" v-on:submit.prevent="addBook">
 
@@ -99,11 +108,13 @@
 <script>
 import { db } from "../db.js";
 import NavBar from "../components/NavBar";
+import Message from "../components/Message";
 
 export default {
   name: "BookInput",
   components: {
-    NavBar
+    NavBar,
+    Message
   },
   firebase: {
     books: db.ref("books")
@@ -116,7 +127,10 @@ export default {
         note: "",
         date: "",
         rating: 0
-      }
+      },
+      title: "",
+      author: "",
+      showMessage: false
     };
   },
   methods: {
@@ -125,12 +139,9 @@ export default {
         if (result) {
           this.newBook.date = new Date().toLocaleDateString("en-US").toString();
           this.$firebaseRefs.books.push(this.newBook);
-          console.log(
-            "adding title: " +
-              this.newBook.title +
-              " author: " +
-              this.newBook.author
-          );
+          this.title = this.newBook.title;
+          this.author = this.newBook.author;
+          this.showMessage = true;
           this.newBook.title = "";
           this.newBook.author = "";
         }
@@ -138,6 +149,10 @@ export default {
     },
     focusInput: function() {
       this.$refs.title.focus();
+    },
+    handleClose: function() {
+      this.showMessage = false;
+      this.focusInput();
     }
   },
   mounted: function() {
