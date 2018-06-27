@@ -1,30 +1,26 @@
-Figure out how to get better comments in text files
+only include used components
+    bulma components
+    firebase components
+      database
+      authentication
+
+Deletion message error not fixed...
 
 Notifications figure out how:
   - notifications stack vertically instead of covering each other.
-  - might have a button to close the undo notification without undoing
+  - if user deletes another book before the previous message is gone,
+    the new message is not shown on top, and subsequent book deletes are bugged and cannot be deleted.
 
 CSS:
   Figure out how to keep stars from changing shape when resized
 
 Precendence:
 Low-Tier:
-  dark mode - toggle switch
-
-  more buttons to easily switch views after adding a book
-
   make home icon rotate on hover / eye effects
 
   Add link to homepage
 
   Reset button on star-rating
-
-  only include used components
-    bulma components
-    firebase components
-      database
-      authentication
-
 IDEAS:
     Android app with a webview that just loads the website
   - Would help learn about a simple webapp
