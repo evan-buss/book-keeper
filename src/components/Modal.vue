@@ -3,10 +3,8 @@
 
     <!-- Transparent Background -->
     <div @click="$emit('close')" class="modal-background"></div>
-
-    <!-- Moda Card -->
+    <!-- Modal Card -->
     <div class="modal-card">
-
       <!-- Card Header -->
       <header class="modal-card-head">
         <p class="modal-card-title">
@@ -18,7 +16,7 @@
       <!-- Card Body -->
       <section class="modal-card-body">
         <textarea class="textarea is-focused" ref="note" v-model="note" placeholder="This was a great book!"></textarea>
-        <button class="button" @click="logBook">Log to Console</button>
+        <!-- <button class="button" @click="logBook">Log to Console</button> -->
       </section>
 
       <!-- Card Footer -->
@@ -44,10 +42,10 @@ export default {
     };
   },
   methods: {
-    logBook: function() {
-      console.log(this.key);
-      console.log(this.note);
-    }
+    // logBook: function() {
+    //   console.log(this.key);
+    //   console.log(this.note);
+    // }
   },
   mounted: function() {
     this.$refs.note.focus();

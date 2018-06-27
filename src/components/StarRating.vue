@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="star-rating">
     <span v-for="(index, value) in stars"
       :key="index" @click="saveRating(index)"
       @mouseover="mouseOver(index)"
@@ -32,9 +32,6 @@ export default {
     };
   },
   methods: {
-    debugLog: function(message) {
-      console.log(message);
-    },
     init: function() {
       if (this.rating != 0) {
         this.starStyle = "gold";
@@ -48,7 +45,6 @@ export default {
       this.currentRating = this.savedRating;
     },
     saveRating: function(value) {
-      console.log("saved rating");
       this.savedRating = value;
       this.starStyle = "gold";
       this.$emit("save", this.savedRating);
@@ -60,12 +56,15 @@ export default {
 };
 </script>
 
-<style scoped>
-.horizIcons {
-  display: inline-block;
-}
-
-span.icon {
-  border: 1px solid black;
+<style lang="scss" scoped>
+@media only screen and (max-width: 500px) {
+  /* attempting to correct stars breaking line formation on small screens */
+  .star-rating {
+    position: absolute;
+    z-index: 4;
+    width: 75px;
+    top: 0.75em;
+    right: 0.75em;
+  }
 }
 </style>

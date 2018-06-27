@@ -24,15 +24,24 @@
       </div>
     </section>
 
+
     <section class="section">
+      <transition name="display-message"
+        enter-active-class="animated bounceIn"
+        leave-active-class="animated fadeOut">
+        <Message v-if="showMessage"  @messageClose="handleClose">
+          {{ title }} by {{ author }} has been added to your library!
+        </Message>
+      </transition>
+
       <div class="container is-fluid">
-        <form id="form" v-on:submit.prevent="addBook">
+        <form @submit="this.focusInput" id="form" v-on:submit.prevent="addBook">
 
           <!-- Book Title Field -->
           <div class="field">
             <label class="label">Title:</label>
             <div class="control has-icons-left has-icons-right">
-              <input class="input"
+              <input class="input" ref="title"
                 :class="{ 'is-danger': errors.has('title') }"
                 autocomplete="off"
                 id="bookTitle"
@@ -42,6 +51,7 @@
                 v-validate.disable="'required|min:2'"
                 v-model="newBook.title">
 
+              <!-- Input bar icons -->
               <span class="icon is-small is-left">
                 <i class="fa fa-book"></i>
               </span>
@@ -50,13 +60,11 @@
               </span>
             </div>
               <!-- Validation Error Popup-->
-              <transition name="fade"
-                enter-active-class="animated fadeIn"
-                leave-active-class="animated fadeOut"
-                v-if="errors.has('title')">
-                 <p class="help is-danger">{{ errors.first('title') }}</p>
+              <transition name="bounce"
+                enter-active-class="animated bounceIn"
+                leave-active-class="animated bounceOut">
+                 <p v-if="errors.has('title')" class="help is-danger">{{ errors.first('title') }}</p>
               </transition>
-
 
           </div>
 
@@ -74,6 +82,7 @@
                 v-validate.disable="'required|min:2'"
                 v-model="newBook.author">
 
+              <!-- Input bar icons -->
               <span class="icon is-small is-left">
                 <i class="fa fa-user" ></i>
               </span>
@@ -83,18 +92,20 @@
             </div>
 
               <!-- Validation Error Popup-->
-              <transition name="fade"
-                v-if="errors.has('author')"
-                enter-active-class="animated fadeIn"
-                leave-active-class="animated fadeOut">
-                <p class="help is-danger">{{ errors.first('author') }}</p>
+              <transition name="bounce"
+                enter-active-class="animated bounceIn"
+                leave-active-class="animated bounceOut">
+                <p class="help is-danger" v-if="errors.has('author')">
+                  {{ errors.first('author') }}
+                </p>
               </transition>
-
-
           </div>
 
-          <input type="submit" class="button is-primary" value="Add Book">
-
+          <!-- Button Row -->
+          <div class="buttons">
+              <input type="submit" class="button is-primary" value="Add Book">
+              <router-link to="/books" class="button">Your Books</router-link>
+          </div>
         </form>
       </div>
     </section>
@@ -102,13 +113,15 @@
 </template>
 
 <script>
-import { db } from "../config/db.js";
+import { db } from "../db.js";
 import NavBar from "../components/NavBar";
+import Message from "../components/Message";
 
 export default {
   name: "BookInput",
   components: {
-    NavBar
+    NavBar,
+    Message
   },
   firebase: {
     books: db.ref("books")
@@ -121,7 +134,10 @@ export default {
         note: "",
         date: "",
         rating: 0
-      }
+      },
+      title: "",
+      author: "",
+      showMessage: false
     };
   },
   methods: {
@@ -130,22 +146,33 @@ export default {
         if (result) {
           this.newBook.date = new Date().toLocaleDateString("en-US").toString();
           this.$firebaseRefs.books.push(this.newBook);
-          console.log(
-            "adding title: " +
-              this.newBook.title +
-              " author: " +
-              this.newBook.author
-          );
+          this.title = this.newBook.title;
+          this.author = this.newBook.author;
+          this.showMessage = true;
           this.newBook.title = "";
           this.newBook.author = "";
         }
       });
+    },
+    focusInput: function() {
+      this.$refs.title.focus();
+    },
+    handleClose: function() {
+      this.showMessage = false;
+      this.focusInput();
     }
+  },
+  mounted: function() {
+    this.focusInput();
   }
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+div.buttons {
+  display: inline-block;
+}
+
 input {
   font-family: "Fira Sans";
 }

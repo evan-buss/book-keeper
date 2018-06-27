@@ -44,13 +44,9 @@ export default {
 };
 </script>
 
-<style scoped>
-/* a:hover {
-} */
-
+<style lang="scss" scoped>
 em:hover {
   text-decoration: line-through;
-
   color: #00d8ff;
 }
 </style>

@@ -23,54 +23,72 @@
     </section>
 
     <!-- Modal Note-Editor Dialog -->
-    <Modal :bookKey="this.key"
-      :bookNote="this.note"
-      v-if="modalIsActive"
-      @save="saveNote"
-      @close="modalIsActive=false">
-        {{this.title}} by {{this.author}} - Notes
-    </Modal>
+
+    <transition name="modal-transition"
+        enter-active-class="animated slideInLeft"
+        leave-active-class="animated slideOutRight">
+      <Modal :bookKey="modal.key"
+        :bookNote="modal.note"
+        v-if="showModal"
+        @save="saveNote"
+        @close="showModal=false">
+          {{modal.title}} by {{modal.author}} - Notes
+      </Modal>
+    </transition>
 
     <!-- Content Section -->
     <section class="section">
-      <div class="container is-fluid">
-        <!-- Columns -->
-        <!-- divide by the number of items per row you want to have -->
-        <div class="gridContainer">
-          <div v-for="book in books" :key="book['.key']">
-            <BookCard
-              :rating="Number(book.rating)"
-              @remove="removeBook(book)"
-              @showModal="showModal(book)"
-              @saveRating="handleRating($event, book['.key'])">
+      <!-- Message Popup -->
+      <transition name="message-transition"
+        enter-active-class="animated bounceIn"
+        leave-active-class="animated fadeOut">
+        <Message :isProgress="true"  :time="6" messageType="is-danger" v-if="showMessage"  @messageClose="this.showMessage=false" @undoDelete="undoDelete">
+         Book Deleted! Click to undo...
+        </Message>
+      </transition>
 
-              <template slot="header">
-                {{ book.title }} - {{ book.author }}
-              </template>
-              <template slot="text">
-                <p v-if="book.note != ''">
-                  {{ book.note }}
-                </p>
-                <p v-else style="color: lightgrey;">
-                  Tell the world what you thought of the book!
-                </p>
-              </template>
-              <template v-if="book.date != ''" slot="date">
-                {{ book.date}}
-              </template>
-            </BookCard>
-          </div>
-        </div>
+      <div class="container is-fluid">
+          <transition-group
+            class="columns is-multiline"
+            name="card-transition"
+            enter-to-class="animated fadeIn"
+            leave-active-class="animated fadeOut">
+            <template v-for="book in books">
+              <div class="column is-one-third" :key="book['.key']">
+                <BookCard
+                  :rating="Number(book.rating)"
+                  @remove="removeBook(book)"
+                  @showModal="modalFunc(book)"
+                  @saveRating="handleRating($event, book['.key'])">
+                  <template slot="header">
+                    {{ book.title }} - {{ book.author }}
+                  </template>
+                  <template slot="text">
+                    <p v-if="book.note != ''">
+                      {{ book.note }}
+                    </p>
+                    <p v-else style="color: lightgrey;">
+                      Tell the world what you thought of the book!
+                    </p>
+                  </template>
+                  <template v-if="book.date!=''" slot="date">
+                    {{ book.date}}
+                  </template>
+                </BookCard>
+              </div>
+            </template>
+         </transition-group>
       </div>
     </section>
   </div>
 </template>
 
 <script>
-import { db } from "../config/db.js";
-import NavBar from "../components/NavBar";
-import Modal from "../components/Modal";
+import { db } from "../db.js";
 import BookCard from "../components/BookCard";
+import Message from "../components/Message";
+import Modal from "../components/Modal";
+import NavBar from "../components/NavBar";
 
 export default {
   name: "BookTable",
@@ -79,70 +97,64 @@ export default {
   },
   components: {
     BookCard,
-    NavBar,
-    Modal
+    Message,
+    Modal,
+    NavBar
   },
   data() {
     return {
-      modalIsActive: false,
-      // might not need because I never change the value
-      key: "",
-      title: "",
-      author: "",
-      note: "",
-      colLen: 3
+      showModal: false,
+      showMessage: false,
+      modal: {
+        key: "",
+        title: "",
+        author: "",
+        note: ""
+      },
+      history: {}
     };
   },
   methods: {
     // Remove the book from the database
     removeBook: function(book) {
+      this.history = book;
       this.$firebaseRefs.books.child(book[".key"]).remove();
+      this.showMessage = true;
+    },
+    undoDelete: function() {
+      // push the last object saved in history array
+      // console.log(JSON.stringify(this.history));
+      delete this.history[".key"];
+      this.$firebaseRefs.books.push(this.history);
+      this.showMessage = false;
     },
     // Show the modal and view / edit the note
-    showModal: function(book) {
-      this.modalIsActive = true;
-      this.key = book[".key"];
-      this.title = book.title;
-      this.author = book.author;
-      this.note = book.note;
+    modalFunc: function(book) {
+      this.showModal = true;
+      this.modal.key = book[".key"];
+      this.modal.title = book.title;
+      this.modal.author = book.author;
+      this.modal.note = book.note;
     },
     // Save the note to database and close the modal
     saveNote: function(data) {
-      // update the firebase note value to the local note
-      console.log("key: " + data[0] + " data: " + data[1]);
       this.$firebaseRefs.books
         .child(data[0])
         .child("note")
         .set(data[1]);
-      console.log("Should be saved to firebase...");
-      this.modalIsActive = false;
+      // hide modal
+      this.showModal = false;
     },
+    // save the returned rating to firebase
     handleRating: function(rating, key) {
       this.$firebaseRefs.books
         .child(key)
         .child("rating")
         .set(rating);
-      console.log("key: " + key);
-      console.log("rating to save " + rating);
-      console.log("rating should be save to firebase");
     }
   }
 };
 </script>
 
-<style scoped>
-.gridContainer {
-  display: grid;
-  grid-gap: 0.75em;
-  /* grid-template-columns: repeat(4, 1fr); */
-  /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-auto-flow: row;
-}
-
-@media only screen and (max-width: 500px) {
-  .gridContainer {
-    grid-template-columns: 1fr;
-  }
-}
+<style lang="scss" scoped>
 </style>

@@ -1,4 +1,5 @@
 <template>
+
   <div class="card">
     <header class="card-header">
       <p class="card-header-title">
@@ -47,12 +48,8 @@ export default {
     };
   },
   methods: {
-    debugLog: function(message) {
-      console.log(message);
-    },
     ratingToParent: function(rating) {
-      // * FIXME: might not need to offload to local variable, test this
-      console.log("Rating passed to card: " + rating);
+      // console.log("Rating passed to card: " + rating);
       this.emitRating = rating;
       this.$emit("saveRating", this.emitRating);
     }
@@ -60,8 +57,7 @@ export default {
 };
 </script>
 
-
-<style scoped>
+<style lang="scss" scoped>
 StarRating {
   width: 95px;
 }

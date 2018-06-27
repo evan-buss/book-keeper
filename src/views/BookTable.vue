@@ -45,19 +45,9 @@
           <tbody>
             <tr v-for="book in books" :key="book['.key']">
               <td>
-
-                <!-- Book Title Entry -->
-                <!-- <a v-on:click="toggleModal">{{ book.title }}</a> -->
                 <a v-on:click="showModal(book)">{{ book.title }}</a>
-
-                <!-- Modal Note Dialog -->
-                <!-- TODO: Data passing is working, but only on the last item of the list; not sure why -->
               </td>
-
-              <!-- Author Entry -->
               <td @click="logBook(book)">{{ book.author }}</td>
-
-              <!-- Remove Entry Button -->
               <td>
                 <i class="fa fa-trash" aria-hidden="true " v-on:click="removeBook(book) "></i>
               </td>
@@ -70,7 +60,7 @@
 </template>
 
 <script>
-import { db } from "../config/db.js";
+import { db } from "../db.js";
 import NavBar from "../components/NavBar";
 import Modal from "../components/Modal";
 
@@ -112,7 +102,6 @@ export default {
         .child(data[0])
         .child("note")
         .set(data[1]);
-      console.log("Should be saved to firebase...");
       this.modalIsActive = false;
       data[1] = "";
     }
@@ -120,5 +109,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>
