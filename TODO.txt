@@ -1,10 +1,9 @@
-only include used components
-    bulma components
-    firebase components
-      database
-      authentication
+Tomorrow:
+  Fix deletion error
+  Delete and reset notification when another delete is called
 
-Deletion message error not fixed...
+  Change server to HTTP2
+  Install Ubuntu on Laptop
 
 Notifications figure out how:
   - notifications stack vertically instead of covering each other.
@@ -13,7 +12,7 @@ Notifications figure out how:
 
 CSS:
   Figure out how to keep stars from changing shape when resized
-
+    -might need another solution for the title and name because they squish the stars
 Precendence:
 Low-Tier:
   make home icon rotate on hover / eye effects
