@@ -32,7 +32,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 h2.title.is-3 {
   text-decoration: underline;
   margin-bottom: 30px;

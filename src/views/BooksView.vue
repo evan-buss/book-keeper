@@ -123,7 +123,7 @@ export default {
     },
     undoDelete: function() {
       // push the last object saved in history array
-      console.log(JSON.stringify(this.history));
+      // console.log(JSON.stringify(this.history));
       delete this.history[".key"];
       this.$firebaseRefs.books.push(this.history);
       this.showMessage = false;
@@ -156,5 +156,5 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>

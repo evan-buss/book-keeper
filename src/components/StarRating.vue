@@ -56,7 +56,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 @media only screen and (max-width: 500px) {
   /* attempting to correct stars breaking line formation on small screens */
   .star-rating {

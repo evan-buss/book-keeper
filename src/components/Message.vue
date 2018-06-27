@@ -69,7 +69,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .notification {
   position: fixed;
   top: 100px;

@@ -168,7 +168,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 div.buttons {
   display: inline-block;
 }

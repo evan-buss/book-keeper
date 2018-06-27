@@ -49,8 +49,7 @@ export default {
   },
   methods: {
     ratingToParent: function(rating) {
-      // * FIXME: might not need to offload to local variable, test this
-      console.log("Rating passed to card: " + rating);
+      // console.log("Rating passed to card: " + rating);
       this.emitRating = rating;
       this.$emit("saveRating", this.emitRating);
     }
@@ -58,8 +57,7 @@ export default {
 };
 </script>
 
-
-<style scoped>
+<style lang="scss" scoped>
 StarRating {
   width: 95px;
 }
