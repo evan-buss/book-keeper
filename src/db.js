@@ -1,4 +1,5 @@
-import FireBase from "firebase";
+import FireBase from "firebase/app";
+import "firebase/database";
 
 // Initialize Firebase
 var config = {
@@ -11,4 +12,5 @@ var config = {
 };
 
 let app = FireBase.initializeApp(config);
+// export const db = app.database();
 export const db = app.database();

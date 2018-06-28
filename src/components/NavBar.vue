@@ -30,7 +30,7 @@
       <div class="navbar-end">
 
         <span class="navbar-item icon nav-logo is-hidden-mobile">
-          <a href="https://github.com/evan-buss/book-list" style="font-size: 45px;">
+          <a href="https://github.com/evan-buss/book-list" style="font-size: 45px;" name="Github Repo">
             <i class="fa fa-github"></i>
           </a>
         </span>
