@@ -22,4 +22,5 @@ Low-Tier:
   Reset button on star-rating
 IDEAS:
     Android app with a webview that just loads the website
+      - learning about PWA's and how to use them
   - Would help learn about a simple webapp

@@ -5,6 +5,7 @@
       <span class="navbar-item nav-logo is-hidden-desktop">
         <span class="icon">
           <a href="https://github.com/evan-buss/book-list" style="font-size:35px;">
+            GitHub
             <i class="fa fa-github"></i>
           </a>
         </span>
