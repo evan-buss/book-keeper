@@ -9,7 +9,9 @@
 
   <div class="hero-body">
     <div class="container">
-      <p class="has-text-light subtitle is-2 has-text-dark">This is a project for me to learn web development.</p><br>
+      <p class="has-text-light subtitle is-3 has-text-light">
+        This is a project for me to learn web development. Using modern libraries and frameworks.
+      </p><br>
       <h2 class="title is-3">
         Technology Used:
       </h2>

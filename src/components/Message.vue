@@ -61,7 +61,7 @@ export default {
   // on mount start progress bar or start message display time
   mounted: function() {
     if (this.isProgress) {
-      this.id = setInterval(this.frame, this.time * 1000 / 100);
+      this.id = setInterval(this.frame, (this.time * 1000) / 100);
     } else {
       this.displayTime();
     }
@@ -71,7 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .notification {
-  position: fixed;
+  position: absolute;
   top: 100px;
   right: 10px;
 }
@@ -82,7 +82,6 @@ export default {
     right: auto;
     left: 0px;
     z-index: 5;
-    /* font-size: 1rem; */
     height: 80px;
     margin: 5px;
     width: calc(100% - 10px);

@@ -42,8 +42,13 @@
       <transition name="message-transition"
         enter-active-class="animated bounceIn"
         leave-active-class="animated fadeOut">
-        <Message :isProgress="true"  :time="6" messageType="is-danger" v-if="showMessage"  @messageClose="this.showMessage=false" @undoDelete="undoDelete">
-         Book Deleted! Click to undo...
+        <Message :isProgress="true"
+          :time="4"
+          messageType="is-danger"
+          v-if="showMessage"
+          @messageClose="showMessage=false"
+          @undoDelete="undoDelete">
+            Book Deleted! Click to undo...
         </Message>
       </transition>
 
