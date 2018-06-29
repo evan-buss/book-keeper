@@ -3,9 +3,8 @@
   <nav class="navbar is-spaced">
     <div class="navbar-brand">
       <span class="navbar-item nav-logo is-hidden-desktop">
-        <span class="icon">
-          <a href="https://github.com/evan-buss/book-list" style="font-size:35px;">
-            GitHub
+        <span class="icon left-logo">
+          <a href="https://github.com/evan-buss/book-list" style="font-size:35px;" name="GitHub">
             <i class="fa fa-github"></i>
           </a>
         </span>
@@ -25,7 +24,6 @@
         <router-link to="/books" class="navbar-item">Your Books</router-link>
         <router-link to="/table" class="navbar-item">Book Table</router-link>
         <router-link to="/about" class="navbar-item">About</router-link>
-        <a class="navbar-item is-hidden-desktop" href="https://github.com/evan-buss/book-list">Github Repo</a>
       </div>
       <div class="navbar-end">
 
@@ -51,4 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.left-logo {
+  padding: 20px;
+}
 </style>

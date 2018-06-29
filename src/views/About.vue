@@ -2,25 +2,46 @@
 <section class="hero is-fullheight is-primary is-bold">
   <div class="hero-head">
     <NavBar></NavBar>
-    <h1 class="title is-2">
-      About the Project
-    </h1>
   </div>
 
   <div class="hero-body">
-    <div class="container">
-      <p class="has-text-light subtitle is-3 has-text-light">
-        This is a project for me to learn web development. Using modern libraries and frameworks.
-      </p><br>
-      <h2 class="title is-3">
-        Technology Used:
-      </h2>
-      <ul class="subtitle is-3 has-text-dark">
-        <li>Vue.JS</li>
-        <li>Bulma CSS Library</li>
-        <li>FireBase</li>
-      </ul>
-    </div>
+    <div class="section">
+        <div class="my-content content is-medium">
+          <h1>
+            About the Project
+          </h1>
+          <p class="has-text-left">
+            Book Keeper is a Single Page Application (SPA) designed to let you
+            keep track of books you've read. After adding a book you can rate it
+            and write a note about it.
+          </p>
+          <h1>
+            Motivations
+          </h1>
+          <p class="has-text-left">This was a project for me to learn the basics of web development
+            beyond the basic static sites that I had written before. Using Vue.js
+            to create reactive front-end components and firebase for a serverless
+            backend, I learned a lot more about what the creation of modern web applications.
+          </p>
+          <h2>
+            Technologies
+          </h2>
+          <ul class="has-text-left">
+            <li>Vue.js
+              <ul>
+                <li>Javascript framework for building user interfaces</li>
+              </ul>
+            <li>Bulma CSS Library</li>
+              <ul>
+                <li>CSS framework based on flexbox</li>
+              </ul>
+            <li>FireBase</li>
+              <ul>
+                <li>Serverless back-end that handles databases, authentication, and storage among other things.</li>
+              </ul>
+          </ul>
+        </div>
+      </div>
   </div>
 </section>
 </template>
@@ -35,12 +56,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h2.title.is-3 {
-  text-decoration: underline;
-  margin-bottom: 30px;
-}
-h1.title.is-2 {
-  text-decoration: underline;
-  margin-bottom: 0;
+@media only screen and (min-width: 500px) {
+  div {
+    .content {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
 }
 </style>
