@@ -43,7 +43,7 @@
         enter-active-class="animated bounceIn"
         leave-active-class="animated fadeOut">
         <Message :isProgress="true"
-          :time="4"
+          :time="3"
           messageType="is-danger"
           v-if="showMessage"
           @messageClose="showMessage=false"

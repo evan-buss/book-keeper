@@ -36,7 +36,7 @@ export default {
     // shows the message for a certain period of time before closing it
     displayTime: function() {
       setTimeout(() => {
-        this.handleClick();
+        this.$emit("messageClose");
       }, this.time * 1000);
     },
     handleClick: function() {
@@ -52,7 +52,7 @@ export default {
     frame: function() {
       if (this.width >= 100) {
         clearInterval(this.id);
-        this.handleClick();
+        this.$emit("messageClose");
       } else {
         this.width++;
       }
