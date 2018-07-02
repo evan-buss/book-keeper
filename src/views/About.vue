@@ -21,23 +21,31 @@
           <p class="has-text-left">This was a project for me to learn the basics of web development
             beyond the basic static sites that I had written before. Using Vue.js
             to create reactive front-end components and firebase for a serverless
-            backend, I learned a lot more about what the creation of modern web applications.
+            backend, I learned a lot more about the creation of modern web applications.
           </p>
           <h2>
             Technologies
           </h2>
           <ul class="has-text-left">
-            <li>Vue.js
+            <li>Vue.js</li>
               <ul>
                 <li>Javascript framework for building user interfaces</li>
+              </ul>
+            <li>FireBase</li>
+              <ul>
+                <li>Serverless back-end that handles databases, authentication, and storage among other things.</li>
               </ul>
             <li>Bulma CSS Library</li>
               <ul>
                 <li>CSS framework based on flexbox</li>
               </ul>
-            <li>FireBase</li>
+            <li>FontAwesome</li>
               <ul>
-                <li>Serverless back-end that handles databases, authentication, and storage among other things.</li>
+                <li>Icon Library</li>
+              </ul>
+            <li>Animate.css</li>
+              <ul>
+                <li>Simple css animations.</li>
               </ul>
           </ul>
         </div>
@@ -56,6 +64,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../style";
+@import "../../node_modules/bulma/sass/layout/hero";
+@import "../../node_modules/bulma/sass/layout/section";
+@import "../../node_modules/bulma/sass/elements/content";
+
 @media only screen and (min-width: 500px) {
   div {
     .content {

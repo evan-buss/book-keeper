@@ -58,6 +58,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../style";
+@import "../../node_modules/bulma/sass/components/card";
+
 StarRating {
   width: 95px;
 }

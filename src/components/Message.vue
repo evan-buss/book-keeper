@@ -70,6 +70,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../style";
+@import "../../node_modules/bulma/sass/elements/icon";
+@import "../../node_modules/bulma/sass/elements/notification";
+@import "../../node_modules/bulma/sass/elements/progress";
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
 .notification {
   position: absolute;
   top: 100px;

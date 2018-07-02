@@ -1,5 +1,5 @@
 <template>
-  <div class="panel-body">
+  <div>
 
     <!-- Hero Section -->
     <section class="hero is-small is-primary is-bold">
@@ -48,7 +48,7 @@
                 <a v-on:click="showModal(book)">{{ book.title }}</a>
               </td>
               <td @click="logBook(book)">{{ book.author }}</td>
-              <td>
+              <td>&nbsp;&nbsp;&nbsp;
                 <i class="fa fa-trash" aria-hidden="true " v-on:click="removeBook(book) "></i>
               </td>
             </tr>
@@ -110,4 +110,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../style";
+@import "../../node_modules/bulma/sass/elements/container";
+@import "../../node_modules/bulma/sass/layout/hero";
+@import "../../node_modules/bulma/sass/elements/table";
+@import "../../node_modules/bulma/sass/layout/section";
+@import "../../node_modules/bulma/sass/elements/icon";
+@import "../../node_modules/bulma/sass/elements/title";
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 </style>

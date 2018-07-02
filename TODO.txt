@@ -1,6 +1,2 @@
-Notifications:
-  Figure out how:
-    - notifications stack vertically instead of covering each other.
-    - sometimes if user deletes another book before the previous message is gone,
-      the new message is not shown on top, and subsequent book deletes are bugged and cannot be deleted.
-      * delete bug might be fixed
+Nice to haves:
+  - Notifications stack vertically instead of covering each other.

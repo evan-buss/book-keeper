@@ -53,3 +53,12 @@ export default {
   padding: 20px;
 }
 </style>
+
+<style lang="scss" scoped>
+@import "../style";
+@import "../../node_modules/bulma/sass/layout/hero";
+@import "../../node_modules/bulma/sass/components/navbar";
+@import "../../node_modules/bulma/sass/elements/icon";
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+</style>

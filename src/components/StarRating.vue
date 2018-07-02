@@ -57,6 +57,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
 @media only screen and (max-width: 500px) {
   /* attempting to correct stars breaking line formation on small screens */
   .star-rating {

@@ -52,3 +52,8 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+@import "../style";
+@import "../../node_modules/bulma/sass/components/modal";
+</style>

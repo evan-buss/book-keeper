@@ -169,6 +169,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../style";
+@import "../../node_modules/bulma/sass/layout/hero";
+@import "../../node_modules/bulma/sass/elements/container";
+@import "../../node_modules/bulma/sass/layout/section";
+@import "../../node_modules/bulma/sass/elements/content";
+@import "../../node_modules/bulma/sass/elements/button";
+@import "../../node_modules/bulma/sass/elements/icon";
+@import "../../node_modules/bulma/sass/elements/form";
+@import "../../node_modules/bulma/sass/elements/title";
+
+@import "../../node_modules/animate.css/animate";
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
 div.buttons {
   display: inline-block;
 }
