@@ -61,7 +61,7 @@ export default {
   // on mount start progress bar or start message display time
   mounted: function() {
     if (this.isProgress) {
-      this.id = setInterval(this.frame, (this.time * 1000) / 100);
+      this.id = setInterval(this.frame, this.time * 1000 / 100);
     } else {
       this.displayTime();
     }
@@ -74,8 +74,6 @@ export default {
 @import "../../node_modules/bulma/sass/elements/icon";
 @import "../../node_modules/bulma/sass/elements/notification";
 @import "../../node_modules/bulma/sass/elements/progress";
-
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
 .notification {
   position: absolute;

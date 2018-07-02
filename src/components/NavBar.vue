@@ -4,7 +4,7 @@
     <div class="navbar-brand">
       <span class="navbar-item nav-logo is-hidden-desktop">
         <span class="icon left-logo">
-          <a href="https://github.com/evan-buss/book-list" style="font-size:35px;" name="GitHub">
+          <a href="https://github.com/evan-buss/book-list" style="font-size:35px;" name="GitHub" alt="GitHub">
             <i class="fa fa-github"></i>
           </a>
         </span>
@@ -59,6 +59,4 @@ export default {
 @import "../../node_modules/bulma/sass/layout/hero";
 @import "../../node_modules/bulma/sass/components/navbar";
 @import "../../node_modules/bulma/sass/elements/icon";
-
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 </style>

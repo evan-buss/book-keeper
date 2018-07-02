@@ -181,8 +181,6 @@ export default {
 
 @import "../../node_modules/animate.css/animate";
 
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-
 div.buttons {
   display: inline-block;
 }
