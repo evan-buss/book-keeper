@@ -61,7 +61,7 @@ export default {
   // on mount start progress bar or start message display time
   mounted: function() {
     if (this.isProgress) {
-      this.id = setInterval(this.frame, this.time * 1000 / 100);
+      this.id = setInterval(this.frame, (this.time * 1000) / 100);
     } else {
       this.displayTime();
     }
