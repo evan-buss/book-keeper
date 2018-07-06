@@ -56,4 +56,7 @@ export default {
 <style lang="scss" scoped>
 @import "../style";
 @import "../../node_modules/bulma/sass/components/modal";
+@import "../../node_modules/bulma/sass/elements/button";
+@import "../../node_modules/bulma/sass/elements/other";
+@import "../../node_modules/bulma/sass/elements/form";
 </style>

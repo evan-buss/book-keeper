@@ -25,8 +25,8 @@
     <!-- Modal Note-Editor Dialog -->
 
     <transition name="modal-transition"
-        enter-active-class="animated slideInLeft"
-        leave-active-class="animated slideOutRight">
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut">
       <Modal :bookKey="modal.key"
         :bookNote="modal.note"
         v-if="showModal"
