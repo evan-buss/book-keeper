@@ -1,4 +1,4 @@
-<template>
+ <template>
   <!-- Navigation Bar -->
   <nav class="navbar is-spaced">
     <div class="navbar-brand">
@@ -27,11 +27,18 @@
       </div>
       <div class="navbar-end">
 
-        <span class="navbar-item icon nav-logo is-hidden-mobile">
-          <a href="https://github.com/evan-buss/book-list" style="font-size: 45px;" name="Github Repo">
+        <a class="navbar-item nav-logo is-hidden-mobile" href="https://github.com/evan-buss/book-list" style="margin-left: 20px; font-size: 45px;" name="Homepage">
+          <span class="icon" >
             <i class="fa fa-github"></i>
-          </a>
-        </span>
+          </span>
+        </a>
+
+        <a class="navbar-item nav-logo is-hidden-mobile" href="https://evanbuss.com" style="margin-left: 20px; font-size: 45px;" name="Homepage">
+          <span class="icon" >
+            <i class="fa fa-home"></i>
+          </span>
+        </a>
+
       </div>
     </div>
   </nav>
