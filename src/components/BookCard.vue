@@ -6,7 +6,10 @@
         <slot name="header"></slot>
       </p>
       <div class="card-header-icon">
-        <StarRating @save="ratingToParent" :rating="rating"></StarRating>
+        <StarRating
+          @save="ratingToParent"
+          :rating="rating"
+        ></StarRating>
       </div>
     </header>
     <div class="card-content">
@@ -24,8 +27,14 @@
           </slot>
         </p>
       </div>
-      <a @click="$emit('showModal')" class="card-footer-item">Edit</a>
-      <a @click="$emit('remove')" class="card-footer-item">Delete</a>
+      <a
+        @click="$emit('showModal')"
+        class="card-footer-item"
+      >Edit</a>
+      <a
+        @click="$emit('remove')"
+        class="card-footer-item"
+      >Delete</a>
     </footer>
   </div>
 </template>
@@ -58,9 +67,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style";
-@import "../../node_modules/bulma/sass/components/card";
-
 StarRating {
   width: 95px;
 }

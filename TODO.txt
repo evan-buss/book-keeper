@@ -1,2 +1,0 @@
-Nice to haves:
-  - Notifications stack vertically instead of covering each other.

@@ -1,6 +1,30 @@
-// Required modules for all Bulma projects
-@import "../node_modules/bulma/sass/utilities/_all";
-@import "../node_modules/bulma/sass/base/_all";
-// Files with variables to be overwritten
-@import "../node_modules/bulma/sass/utilities/initial-variables";
-@import "../node_modules/bulma/sass/utilities/functions";
+@charset "utf-8";
+
+// Google Fonts
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
+// Import only what you need from Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+
+// Animate css
+@import "../node_modules/animate.css/animate";
+
+// In use
+@import "../node_modules/bulma/sass/components/card";
+@import "../node_modules/bulma/sass/elements/icon";
+@import "../node_modules/bulma/sass/elements/notification";
+@import "../node_modules/bulma/sass/elements/progress";
+@import "../node_modules/bulma/sass/components/modal";
+@import "../node_modules/bulma/sass/elements/button";
+@import "../node_modules/bulma/sass/elements/other";
+@import "../node_modules/bulma/sass/elements/form";
+@import "../node_modules/bulma/sass/components/navbar";
+@import "../node_modules/bulma/sass/layout/hero";
+@import "../node_modules/bulma/sass/layout/section";
+@import "../node_modules/bulma/sass/elements/content";
+@import "../node_modules/bulma/sass/elements/container";
+@import "../node_modules/bulma/sass/elements/title";
+@import "../node_modules/bulma/sass/grid/columns";
+@import "../node_modules/bulma/sass/elements/table";

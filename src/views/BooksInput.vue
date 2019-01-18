@@ -24,24 +24,34 @@
       </div>
     </section>
 
-
     <section class="section">
-      <transition name="display-message"
+      <transition
+        name="display-message"
         enter-active-class="animated bounceIn"
-        leave-active-class="animated fadeOut">
-        <Message v-if="showMessage"  @messageClose="handleClose">
+        leave-active-class="animated fadeOut"
+      >
+        <Message
+          v-if="showMessage"
+          @messageClose="handleClose"
+        >
           {{ title }} by {{ author }} has been added to your library!
         </Message>
       </transition>
 
       <div class="container is-fluid">
-        <form @submit="this.focusInput" id="form" v-on:submit.prevent="addBook">
+        <form
+          @submit.exact="this.focusInput"
+          id="form"
+          v-on:submit.prevent="addBook"
+        >
 
           <!-- Book Title Field -->
           <div class="field">
             <label class="label">Title:</label>
             <div class="control has-icons-left has-icons-right">
-              <input class="input" ref="title"
+              <input
+                class="input"
+                ref="title"
                 :class="{ 'is-danger': errors.has('title') }"
                 autocomplete="off"
                 id="bookTitle"
@@ -49,30 +59,43 @@
                 placeholder="Book Title"
                 type="text"
                 v-validate.disable="'required|min:2'"
-                v-model="newBook.title">
+                v-model="newBook.title"
+              >
 
               <!-- Input bar icons -->
               <span class="icon is-small is-left">
                 <i class="fa fa-book"></i>
               </span>
               <span class="icon is-small is-right">
-                <i class="fa fa-exclamation-triangle" v-if="errors.has('title')"></i>
+                <i
+                  class="fa fa-exclamation-triangle"
+                  v-if="errors.has('title')"
+                ></i>
               </span>
             </div>
-              <!-- Validation Error Popup-->
-              <transition name="bounce"
-                enter-active-class="animated bounceIn"
-                leave-active-class="animated bounceOut">
-                 <p v-if="errors.has('title')" class="help is-danger">{{ errors.first('title') }}</p>
-              </transition>
+            <!-- Validation Error Popup-->
+            <transition
+              name="bounce"
+              enter-active-class="animated bounceIn"
+              leave-active-class="animated bounceOut"
+            >
+              <p
+                v-if="errors.has('title')"
+                class="help is-danger"
+              >{{ errors.first('title') }}</p>
+            </transition>
 
           </div>
 
           <!-- Book Author Field -->
           <div class="field">
-            <label class="label" for="bookAuthor">Author:</label>
+            <label
+              class="label"
+              for="bookAuthor"
+            >Author:</label>
             <div class="control has-icons-left has-icons-right">
-              <input class="input"
+              <input
+                class="input"
                 :class="{ 'is-danger': errors.has('author') }"
                 autocomplete="off"
                 id="bookAuthor"
@@ -80,31 +103,47 @@
                 placeholder="Book Author"
                 type="text"
                 v-validate.disable="'required|min:2'"
-                v-model="newBook.author">
+                v-model="newBook.author"
+              >
 
               <!-- Input bar icons -->
               <span class="icon is-small is-left">
-                <i class="fa fa-user" ></i>
+                <i class="fa fa-user"></i>
               </span>
               <span class="icon is-small is-right">
-                <i class="fa fa-exclamation-triangle" v-if="errors.has('author')"></i>
+                <i
+                  class="fa fa-exclamation-triangle"
+                  v-if="errors.has('author')"
+                ></i>
               </span>
             </div>
 
-              <!-- Validation Error Popup-->
-              <transition name="bounce"
-                enter-active-class="animated bounceIn"
-                leave-active-class="animated bounceOut">
-                <p class="help is-danger" v-if="errors.has('author')">
-                  {{ errors.first('author') }}
-                </p>
-              </transition>
+            <!-- Validation Error Popup-->
+            <transition
+              name="bounce"
+              enter-active-class="animated bounceIn"
+              leave-active-class="animated bounceOut"
+            >
+              <p
+                class="help is-danger"
+                v-if="errors.has('author')"
+              >
+                {{ errors.first('author') }}
+              </p>
+            </transition>
           </div>
 
           <!-- Button Row -->
           <div class="buttons">
-              <input type="submit" class="button is-primary" value="Add Book">
-              <router-link to="/books" class="button">Your Books</router-link>
+            <input
+              type="submit"
+              class="button is-primary"
+              value="Add Book"
+            >
+            <router-link
+              to="/books"
+              class="button"
+            >Your Books</router-link>
           </div>
         </form>
       </div>
@@ -169,18 +208,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style";
-@import "../../node_modules/bulma/sass/layout/hero";
-@import "../../node_modules/bulma/sass/elements/container";
-@import "../../node_modules/bulma/sass/layout/section";
-@import "../../node_modules/bulma/sass/elements/content";
-@import "../../node_modules/bulma/sass/elements/button";
-@import "../../node_modules/bulma/sass/elements/icon";
-@import "../../node_modules/bulma/sass/elements/form";
-@import "../../node_modules/bulma/sass/elements/title";
-
-@import "../../node_modules/animate.css/animate";
-
 div.buttons {
   display: inline-block;
 }

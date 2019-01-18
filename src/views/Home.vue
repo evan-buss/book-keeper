@@ -16,16 +16,19 @@
           <!-- <span class="icon has-text-dark">
             <i class="fa fa-book"></i>
           </span> -->
-            <p>
-              👁
-              <span class="icon has-text-dark">
-                <i class="fa fa-book"></i>
-              </span> 👁 <br>
-              💧👄💧
-            </p>
+          <p>
+            👁
+            <span class="icon has-text-dark">
+              <i class="fa fa-book"></i>
+            </span> 👁 <br>
+            💧👄💧
+          </p>
         </h2>
         <h3 class="subtitle is-spaced is-3 has-text-dark">
-          A project by <a class="has-text-light" href="https://github.com/evan-buss/book-list"><em>Evan Buss</em></a>
+          A project by <a
+            class="has-text-light"
+            href="https://github.com/evan-buss/book-list"
+          ><em>Evan Buss</em></a>
         </h3>
 
       </div>
@@ -45,12 +48,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style";
-@import "../../node_modules/bulma/sass/layout/hero";
-@import "../../node_modules/bulma/sass/elements/icon";
-@import "../../node_modules/bulma/sass/elements/title";
-@import "../../node_modules/bulma/sass/elements/container";
-
 em:hover {
   text-decoration: line-through;
   color: #00d8ff;

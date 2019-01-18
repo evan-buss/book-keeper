@@ -39,17 +39,30 @@
           </thead>
 
           <!-- Modal Note-Editor Dialog -->
-          <Modal :bookKey="this.key" :bookNote="this.note" v-if="modalIsActive" v-on:save="saveNote" @close="modalIsActive=false">{{this.title}} by {{this.author}} - Notes</Modal>
+          <Modal
+            :bookKey="this.key"
+            :bookNote="this.note"
+            v-if="modalIsActive"
+            v-on:save="saveNote"
+            @close="modalIsActive=false"
+          >{{this.title}} by {{this.author}} - Notes</Modal>
 
           <!-- Table Body -->
           <tbody>
-            <tr v-for="book in books" :key="book['.key']">
+            <tr
+              v-for="book in books"
+              :key="book['.key']"
+            >
               <td>
                 <a v-on:click="showModal(book)">{{ book.title }}</a>
               </td>
               <td @click="logBook(book)">{{ book.author }}</td>
               <td>&nbsp;&nbsp;&nbsp;
-                <i class="fa fa-trash" aria-hidden="true " v-on:click="removeBook(book) "></i>
+                <i
+                  class="fa fa-trash"
+                  aria-hidden="true "
+                  v-on:click="removeBook(book) "
+                ></i>
               </td>
             </tr>
           </tbody>
@@ -108,13 +121,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-@import "../style";
-@import "../../node_modules/bulma/sass/elements/container";
-@import "../../node_modules/bulma/sass/layout/hero";
-@import "../../node_modules/bulma/sass/elements/table";
-@import "../../node_modules/bulma/sass/layout/section";
-@import "../../node_modules/bulma/sass/elements/icon";
-@import "../../node_modules/bulma/sass/elements/title";
-</style>

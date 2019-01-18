@@ -1,11 +1,11 @@
 <template>
-<section class="hero is-fullheight is-primary is-bold">
-  <div class="hero-head">
-    <NavBar></NavBar>
-  </div>
+  <section class="hero is-fullheight is-primary is-bold">
+    <div class="hero-head">
+      <NavBar></NavBar>
+    </div>
 
-  <div class="hero-body">
-    <div class="section">
+    <div class="hero-body">
+      <div class="section">
         <div class="my-content content is-medium">
           <h1>
             About the Project
@@ -28,30 +28,30 @@
           </h2>
           <ul class="has-text-left">
             <li>Vue.js</li>
-              <ul>
-                <li>Javascript framework for building user interfaces</li>
-              </ul>
+            <ul>
+              <li>Javascript framework for building user interfaces</li>
+            </ul>
             <li>FireBase</li>
-              <ul>
-                <li>Serverless back-end that handles databases, authentication, and storage among other things.</li>
-              </ul>
+            <ul>
+              <li>Serverless back-end that handles databases, authentication, and storage among other things.</li>
+            </ul>
             <li>Bulma CSS Library</li>
-              <ul>
-                <li>CSS framework based on flexbox</li>
-              </ul>
+            <ul>
+              <li>CSS framework based on flexbox</li>
+            </ul>
             <li>FontAwesome</li>
-              <ul>
-                <li>Icon Library</li>
-              </ul>
+            <ul>
+              <li>Icon Library</li>
+            </ul>
             <li>Animate.css</li>
-              <ul>
-                <li>Simple css animations.</li>
-              </ul>
+            <ul>
+              <li>Simple css animations.</li>
+            </ul>
           </ul>
         </div>
       </div>
-  </div>
-</section>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -65,9 +65,6 @@ export default {
 
 <style lang="scss" scoped>
 @import "../style";
-@import "../../node_modules/bulma/sass/layout/hero";
-@import "../../node_modules/bulma/sass/layout/section";
-@import "../../node_modules/bulma/sass/elements/content";
 
 @media only screen and (min-width: 500px) {
   div {

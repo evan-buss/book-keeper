@@ -1,10 +1,23 @@
 <template>
-  <div @click="handleClick" v-show="display" class="notification" :class="messageType">
+  <div
+    @click="handleClick"
+    v-show="display"
+    class="notification"
+    :class="messageType"
+  >
     <slot @click="handleClick"></slot>
-    <span v-if="isProgress" class="icon">
-        <i class="fa fa-undo"></i>
+    <span
+      v-if="isProgress"
+      class="icon"
+    >
+      <i class="fa fa-undo"></i>
     </span>
-    <progress class="progress is-primary is-small" :value="this.width" max="100" v-if="isProgress"></progress>
+    <progress
+      class="progress is-primary is-small"
+      :value="this.width"
+      max="100"
+      v-if="isProgress"
+    ></progress>
   </div>
 </template>
 
@@ -70,11 +83,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../style";
-@import "../../node_modules/bulma/sass/elements/icon";
-@import "../../node_modules/bulma/sass/elements/notification";
-@import "../../node_modules/bulma/sass/elements/progress";
-
 .notification {
   position: absolute;
   top: 100px;
