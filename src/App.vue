@@ -10,11 +10,8 @@ export default {
 };
 </script>
 
-
-
-
 <style lang="scss">
-@import "@/style.scss";
+@import "style";
 #app {
   font-family: "Fira Sans", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -67,7 +67,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-StarRating {
+.card {
+  border-radius: 10px;
+}
+
+.star-rating {
   width: 95px;
 }
 

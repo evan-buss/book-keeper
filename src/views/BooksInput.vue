@@ -2,7 +2,7 @@
   <div>
 
     <!-- Hero Section -->
-    <section class="hero is-small is-primary is-bold">
+    <section class="hero is-medium is-primary is-bold">
 
       <!-- Hero-Head -->
       <div class="hero-head">
@@ -24,7 +24,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section page-content">
       <transition
         name="display-message"
         enter-active-class="animated bounceIn"
@@ -38,114 +38,115 @@
         </Message>
       </transition>
 
-      <div class="container is-fluid">
-        <form
-          @submit.exact="this.focusInput"
+      <div class="form-container container is-fluid">
+        <!--      @submit.exact="this.focusInput"
           id="form"
-          v-on:submit.prevent="addBook"
-        >
+          v-on:submit.prevent="addBook" -->
+        <!-- <form> -->
 
-          <!-- Book Title Field -->
-          <div class="field">
-            <label class="label">Title:</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input"
-                ref="title"
-                :class="{ 'is-danger': errors.has('title') }"
-                autocomplete="off"
-                id="bookTitle"
-                name="title"
-                placeholder="Book Title"
-                type="text"
-                v-validate.disable="'required|min:2'"
-                v-model="newBook.title"
-              >
-
-              <!-- Input bar icons -->
-              <span class="icon is-small is-left">
-                <i class="fa fa-book"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i
-                  class="fa fa-exclamation-triangle"
-                  v-if="errors.has('title')"
-                ></i>
-              </span>
-            </div>
-            <!-- Validation Error Popup-->
-            <transition
-              name="bounce"
-              enter-active-class="animated bounceIn"
-              leave-active-class="animated bounceOut"
-            >
-              <p
-                v-if="errors.has('title')"
-                class="help is-danger"
-              >{{ errors.first('title') }}</p>
-            </transition>
-
-          </div>
-
-          <!-- Book Author Field -->
-          <div class="field">
-            <label
-              class="label"
-              for="bookAuthor"
-            >Author:</label>
-            <div class="control has-icons-left has-icons-right">
-              <input
-                class="input"
-                :class="{ 'is-danger': errors.has('author') }"
-                autocomplete="off"
-                id="bookAuthor"
-                name="author"
-                placeholder="Book Author"
-                type="text"
-                v-validate.disable="'required|min:2'"
-                v-model="newBook.author"
-              >
-
-              <!-- Input bar icons -->
-              <span class="icon is-small is-left">
-                <i class="fa fa-user"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i
-                  class="fa fa-exclamation-triangle"
-                  v-if="errors.has('author')"
-                ></i>
-              </span>
-            </div>
-
-            <!-- Validation Error Popup-->
-            <transition
-              name="bounce"
-              enter-active-class="animated bounceIn"
-              leave-active-class="animated bounceOut"
-            >
-              <p
-                class="help is-danger"
-                v-if="errors.has('author')"
-              >
-                {{ errors.first('author') }}
-              </p>
-            </transition>
-          </div>
-
-          <!-- Button Row -->
-          <div class="buttons">
+        <!-- Book Title Field -->
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control has-icons-left has-icons-right">
             <input
-              type="submit"
-              class="button is-primary"
-              value="Add Book"
+              class="input"
+              ref="title"
+              :class="{ 'is-danger': errors.has('title') }"
+              autocomplete="off"
+              id="bookTitle"
+              name="title"
+              placeholder="Book Title"
+              type="text"
+              v-validate.disable="'required|min:2'"
+              v-model="newBook.title"
             >
-            <router-link
-              to="/books"
-              class="button"
-            >Your Books</router-link>
+
+            <!-- Input bar icons -->
+            <span class="icon is-small is-left">
+              <i class="fa fa-book"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i
+                class="fa fa-exclamation-triangle"
+                v-if="errors.has('title')"
+              ></i>
+            </span>
           </div>
-        </form>
+
+          <!-- Validation Error Popup-->
+          <transition
+            name="bounce"
+            enter-active-class="animated bounceIn"
+            leave-active-class="animated bounceOut"
+          >
+            <p
+              v-if="errors.has('title')"
+              class="help is-danger"
+            >{{ errors.first('title') }}</p>
+          </transition>
+
+        </div>
+
+        <!-- Book Author Field -->
+        <div class="field">
+          <label
+            class="label"
+            for="bookAuthor"
+          >Author</label>
+          <div class="control has-icons-left has-icons-right">
+            <input
+              class="input"
+              :class="{ 'is-danger': errors.has('author') }"
+              autocomplete="off"
+              id="bookAuthor"
+              name="author"
+              placeholder="Book Author"
+              type="text"
+              v-validate="'required|min:2'"
+              v-model="newBook.author"
+              @keydown.enter="addBook"
+            >
+
+            <!-- Input bar icons -->
+            <span class="icon is-small is-left">
+              <i class="fa fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i
+                class="fa fa-exclamation-triangle"
+                v-if="errors.has('author')"
+              ></i>
+            </span>
+          </div>
+
+          <!-- Validation Error Popup-->
+          <transition
+            name="bounce"
+            enter-active-class="animated bounceIn"
+            leave-active-class="animated bounceOut"
+          >
+            <p
+              class="help is-danger"
+              v-if="errors.has('author')"
+            >
+              {{ errors.first('author') }}
+            </p>
+          </transition>
+        </div>
+
+        <!-- Button Row -->
+        <div class="buttons">
+          <router-link
+            to="/books"
+            class="button"
+          >Your Books</router-link>
+          <button
+            @click="addBook"
+            class="button is-primary"
+            value="Add Book"
+          >Add Book</button>
+        </div>
+        <!-- </form> -->
       </div>
     </section>
   </div>
@@ -181,8 +182,11 @@ export default {
   },
   methods: {
     addBook: function() {
+      console.log("add book");
+
       this.$validator.validateAll().then(result => {
         if (result) {
+          console.log("Validation successful");
           this.newBook.date = new Date().toLocaleDateString("en-US").toString();
           this.$firebaseRefs.books.push(this.newBook);
           this.title = this.newBook.title;
@@ -190,6 +194,7 @@ export default {
           this.showMessage = true;
           this.newBook.title = "";
           this.newBook.author = "";
+          this.focusInput();
         }
       });
     },
@@ -219,10 +224,32 @@ input {
   width: 75%;
   margin: auto;
 }
-@media only screen and (max-width: 500px) {
-  .control {
-    width: 100%;
-    margin: 0.75em auto;
+
+.page-content {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.form-container {
+  background-color: white;
+  margin-top: -100px;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+@media only screen and (min-width: 768px) {
+  .form-container {
+    width: 80%;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 1200px) {
+  .form-container {
+    width: 50%;
   }
 }
 </style>
