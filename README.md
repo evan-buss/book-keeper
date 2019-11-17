@@ -2,7 +2,7 @@
 
 > Book list built with Vue.js, Bulma, and VueFire/FireBase
 
-View the project at <https://books.evanbuss.com>
+One of my first web development projects. I learned Vue.js and Firebase while making it.
 
 ## Build Setup
 
